@@ -24,7 +24,7 @@ body {
 
 body::before {
     content: "";
-    background: url("/Images/bg\ img.jpg") center;
+    background: url("/Images/bg_img.jpg") center;
     background-size: cover;
     position: absolute;
     top: 0;
@@ -208,11 +208,20 @@ form i.fa-microphone {
     font-size: 17px;
 }
 
-/* checkbox */
+/* Setting */
+#setting {
+    position: absolute;
+    bottom: 5px;
+    left: 30px;
+}
+
+#setting i {
+    font-size: 20px;
+    cursor: pointer;
+}
+
 .checkbox {
+    visibility: hidden;
     display: flex;
     gap: 5px;
-    position: absolute;
-    bottom: 30px;
-    left: 30px;
 }
