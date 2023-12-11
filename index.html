@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/Images/chrome.svg" type="image/x-icon">
+    <title>New Tab</title>
+    <link rel="stylesheet" href="style.css">
+    <script src=" https://kit.fontawesome.com/4c582ec221.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="main-container">
+            <!-- clock -->
+            <div class="clock-container">
+                <span id="hour"></span>
+                <span id="dots">:</span>
+                <span id="min"></span>
+                <span id="zone"></span>
+            </div>
+            <!-- name -->
+            <div class="name-container">
+                <h1>Good <span id="dayTime"></span>, Ali Hamas</h1>
+            </div>
+        </div>
+        <!-- search -->
+        <div class="search-container" id="search-container">
+            <form onsubmit="searchGoogle(event)" autocomplete="off">
+                <input type="text" id="search" minlength="1" placeholder="Search Google">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <i class="fa-solid fa-microphone"></i>
+            </form>
+        </div>
+        <!-- BookMarks -->
+        <div class="bookmarks-container">
+            <a href="https://youtube.com" class="bookmark">
+                <div class="bookmark-icon youtube">
+                    <img src="http://alihamas.com/Chrome/Images/youtube.svg" width="30px">
+                </div>
+                <div class="bookmark-title">YouTube</div>
+            </a>
+            <a href="https://twitter.com" class="bookmark">
+                <div class="bookmark-icon twitter">
+                    <img src="http://alihamas.com/Chrome/Images/twitter.svg" width="25px">
+                </div>
+                <div class="bookmark-title">Twitter</div>
+            </a>
+            <a href="https://instagram.com" class="bookmark">
+                <div class="bookmark-icon instagram">
+                    <img src="http://alihamas.com/Chrome/Images/instagram.svg" width="25px">
+                </div>
+                <div class="bookmark-title">Instagram</div>
+            </a>
+            <a href="https://facebook.com" class="bookmark">
+                <div class="bookmark-icon facebook">
+                    <img src="http://alihamas.com/Chrome/Images/facebook.svg" width="26px">
+                </div>
+                <div class="bookmark-title">FaceBook</div>
+            </a>
+            <a href="https://linkedin.com" class="bookmark">
+                <div class="bookmark-icon linkedin">
+                    <img src="http://alihamas.com/Chrome/Images/linkedin.svg" width="22px">
+                </div>
+                <div class="bookmark-title">LinkedIn</div>
+            </a>
+            <a href="https://github.com" class="bookmark">
+                <div class="bookmark-icon github">
+                    <img src="http://alihamas.com/Chrome/Images/github.svg" width="30px">
+                </div>
+                <div class="bookmark-title">GitHub</div>
+            </a>
+            <a href="https://chat.openai.com/" class="bookmark">
+                <div class="bookmark-icon">
+                    <img src="http://alihamas.com/Chrome/Images/chatgpt.webp" width="50px">
+                </div>
+                <div class="bookmark-title">Chat GPT</div>
+            </a>
+            <a href="https://mail.google.com/mail/" class="bookmark">
+                <div class="bookmark-icon">
+                    <img src="http://alihamas.com/Chrome/Images/gmail.png" width="25px">
+                </div>
+                <div class="bookmark-title">Gmail</div>
+            </a>
+            <a href="http://alihamas.com" class="bookmark">
+                <div class="bookmark-icon">
+                    <img src="http://alihamas.com/Chrome/Images/portfolio.png" width="50px">
+                </div>
+                <div class="bookmark-title">Portfolio</div>
+            </a>
+        </div>
+        <!-- Day & Date -->
+        <div class="dayDate-container">
+            <div class="day-container">
+                <span id="day"></span>
+            </div>
+            <div class="date-container">
+                <span id="month"></span>
+                <span id="date"></span>
+                <span id="year"></span>
+            </div>
+        </div>
+        <div class="checkbox">
+            <input type="checkbox" id="checkbox" onclick="check()" checked>
+            <label for="checkbox">Search</label>
+        </div>
+
+
+
+
+
+    </div>
+    <script src="/script.js"></script>
+</body>
+
+</html>

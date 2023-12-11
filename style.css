@@ -1,0 +1,218 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    text-decoration: none;
+    color: white;
+}
+
+html {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    background: url("/Images/bg\ img.jpg") center;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(0, 0, 0, .5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    overflow: auto;
+}
+
+.container .main-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.container .clock-container {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 10px;
+    padding-top: 20px;
+    cursor: default;
+}
+
+#hour,
+#min,
+#dots {
+    font-size: 150px;
+    line-height: 100px;
+    font-weight: 500;
+}
+
+#zone {
+    font-size: 50px;
+}
+
+/* name container */
+.name-container h1,
+.name-container span {
+    font-size: 40px;
+    font-weight: 500;
+}
+
+/* Search container */
+.search-container {
+    width: 500px;
+}
+
+form {
+    width: 100%;
+    position: relative;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    font-size: 16px;
+    outline: none;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.25);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+form i.fa-magnifying-glass {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+}
+
+form i.fa-microphone {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+
+::placeholder {
+    color: rgb(255, 255, 255, .7);
+}
+
+/* BookMarks */
+.bookmarks-container {
+    width: 502px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.bookmarks-container .bookmark {
+    width: 100px;
+    height: 100px;
+    gap: 5px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: background .3s ease;
+}
+
+.bookmark:hover {
+    background: rgba(255, 255, 255, 0.25);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.bookmark-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.bookmark .bookmark-title {
+    font-size: 13px;
+}
+
+.youtube {
+    background-color: white;
+}
+
+.twitter {
+    background-color: black;
+}
+
+.instagram {
+    background: #d6249f;
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+
+.facebook {
+    background-color: #0766FF;
+}
+
+.linkedin {
+    background-color: #1969C6;
+}
+
+.github {
+    background-color: white;
+}
+
+/* dayDate container */
+.dayDate-container {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    cursor: default;
+}
+
+#day {
+    font-size: 20px;
+}
+
+#date,
+#month,
+#year {
+    font-size: 17px;
+}
+
+/* checkbox */
+.checkbox {
+    display: flex;
+    gap: 5px;
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+}
