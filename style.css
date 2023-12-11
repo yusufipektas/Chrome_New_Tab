@@ -89,7 +89,7 @@ form {
     position: relative;
 }
 
-input {
+input[type="text"] {
     width: 100%;
     padding: 10px;
     padding-left: 40px;
@@ -210,18 +210,42 @@ form i.fa-microphone {
 
 /* Setting */
 #setting {
-    position: absolute;
-    bottom: 5px;
-    left: 30px;
+    position: fixed;
+    bottom: 40px;
+    left: 40px;
 }
 
 #setting i {
     font-size: 20px;
     cursor: pointer;
+    color: #ccc;
+}
+
+#setting i:hover {
+    color: white;
+}
+
+#setting-box {
+    width: 200px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid rgb(255, 255, 255, .5);
+    background: rgba(255, 255, 255, 0.25);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    position: absolute;
+    bottom: 35px;
 }
 
 .checkbox {
-    visibility: hidden;
     display: flex;
     gap: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+#gmail-box {
+    width: 800px;
+    height: 500px;
+    background-color: white;
 }
