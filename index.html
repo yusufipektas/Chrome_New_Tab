@@ -13,26 +13,24 @@
 
 <body>
     <div id="container">
-        <div class="main-container">
-            <!-- clock -->
-            <div class="clock-container">
-                <span id="hour"></span>
-                <span id="dots">:</span>
-                <span id="min"></span>
-                <span id="zone"></span>
-            </div>
-            <!-- name -->
-            <div class="name-container">
-                <h1>Good <span id="dayTime"></span>, Ali Hamas</h1>
-            </div>
+        <!-- clock -->
+        <div id="time-container">
+            <span id="hour">12</span>
+            <span id="dots">:</span>
+            <span id="min">00</span>
+            <span id="zone">AM</span>
+        </div>
+        <!-- name -->
+        <div id="name-container">
+            <h1>Good <span id="dayTime">Morning</span>, <span id="name">Ali Hamas</span></h1>
         </div>
         <!-- search -->
-        <div class="search-container" id="search-container">
+        <div id="search-container" id="search-container">
             <form onsubmit="searchGoogle(event)" autocomplete="off">
-                <label for="search-bar">
+                <label for="search-input">
                     <img src="https://cdn-icons-png.flaticon.com/128/281/281764.png" alt="google" width="20px">
                 </label>
-                <input type="search" id="search-bar" minlength="1" placeholder="Search Google">
+                <input type="search" id="search-input" minlength="1" placeholder="Search Google">
             </form>
         </div>
         <!-- BookMarks -->

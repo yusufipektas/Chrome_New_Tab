@@ -24,12 +24,12 @@ const dayNames = [
 setInterval(() => {
   const a = new Date();
   // Getting clock
-  let bHour = a.getHours(),
-    hour = 0,
-    bMin = a.getMinutes(),
+  let hour = 0,
+    bHour = a.getHours(),
     min = 0,
-    bday = a.getDay(),
-    day = dayNames[bday - 1],
+    bMin = a.getMinutes(),
+    bDay = a.getDay(),
+    day = dayNames[bDay - 1],
     date = a.getDate(),
     bMonth = a.getMonth(),
     month = monthNames[bMonth - 1],
