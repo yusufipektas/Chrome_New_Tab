@@ -7,7 +7,7 @@ body {
     z-index: -1;
 }
 
-.container {
+#container {
     width: 100%;
     height: 100vh;
     background-color: rgb(0, 0, 0, .5);
@@ -19,12 +19,12 @@ body {
     overflow: auto;
 }
 
-.container .main-container {
+#container .main-container {
     display: flex;
     flex-direction: column;
 }
 
-.container .clock-container {
+#container .clock-container {
     display: flex;
     align-items: baseline;
     justify-content: center;
@@ -58,43 +58,68 @@ body {
 }
 
 form {
-    width: 100%;
+    width: 500px;
     position: relative;
+    display: flex;
+    align-items: center;
+
+    ::placeholder {
+        color: rgb(255, 255, 255, .7);
+    }
 }
 
-form input[type="text"] {
+form label {}
+
+form input[type="search"] {
     width: 100%;
-    padding: 10px;
-    padding-left: 40px;
-    padding-right: 40px;
+    height: 50px;
     font-size: 16px;
     outline: none;
-    border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     background: rgba(255, 255, 255, 0.25);
-    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
 }
 
-form i.fa-magnifying-glass {
-    position: absolute;
-    top: 50%;
-    left: 15px;
-    transform: translateY(-50%);
-}
-
-form i.fa-microphone {
-    position: absolute;
-    top: 50%;
-    right: 15px;
-    transform: translateY(-50%);
+::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 20px;
+    width: 20px;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="16" width="12" viewBox="0 0 384 512"><path fill="%23ffffff" d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>');
+    background-size: 20px 20px;
     cursor: pointer;
 }
 
-
-::placeholder {
-    color: rgb(255, 255, 255, .7);
+form .form-right {
+    height: 50px;
+    padding: 0 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-right-radius: 999px;
+    border-bottom-right-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: none;
+    background-color: white;
+    cursor: pointer;
 }
+
+.form-right button {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+}
+
+.form-right button svg {
+    fill: black;
+}
+
 
 /* BookMarks */
 .bookmarks-container {
@@ -114,12 +139,11 @@ form i.fa-microphone {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    transition: background .3s ease;
+    transition: all .3s ease;
 }
 
 .bookmark:hover {
     background: rgba(255, 255, 255, 0.25);
-    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
 }
 
@@ -200,12 +224,6 @@ form i.fa-microphone {
     color: white;
 }
 
-#close-setting {
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    font-size: 28px;
-}
 
 
 /* Setting Box */
@@ -213,7 +231,6 @@ form i.fa-microphone {
     width: 0px;
     height: 200vh;
     background: rgba(255, 255, 255, 0.25);
-    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     position: fixed;
     left: 0;
@@ -225,8 +242,6 @@ form i.fa-microphone {
 .setting-inner {
     padding: 30px;
 }
-
-
 
 .setting-tile {
     display: flex;

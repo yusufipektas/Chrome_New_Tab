@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <div class="container" id="container">
+    <div id="container">
         <div class="main-container">
             <!-- clock -->
             <div class="clock-container">
@@ -29,9 +29,10 @@
         <!-- search -->
         <div class="search-container" id="search-container">
             <form onsubmit="searchGoogle(event)" autocomplete="off">
-                <input type="text" id="search" minlength="1" placeholder="Search Google">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <i class="fa-solid fa-microphone"></i>
+                <label for="search-bar">
+                    <img src="https://cdn-icons-png.flaticon.com/128/281/281764.png" alt="google" width="20px">
+                </label>
+                <input type="search" id="search-bar" minlength="1" placeholder="Search Google">
             </form>
         </div>
         <!-- BookMarks -->
@@ -102,26 +103,27 @@
     <i class="fa-solid fa-gear setting-icons" id="open-setting" onclick="openSetting()"></i>
     </div>
     <div id="setting-box">
-        <i class="fa-solid fa-xmark setting-icons" id="close-setting" onclick="closeSetting()"></i>
         <div class="setting-inner">
-
-
+            <!-- setting tiles -->
             <div class="setting-tile">
-                <input type="checkbox" id="search-checkbox" onclick="check()" checked>
-                <label for="search-checkbox">Search</label>
+                <h1>Settings</h1>
+                <i class="fa-solid fa-xmark setting-icons" id="close-setting" onclick="closeSetting()"></i>
             </div>
             <div class="setting-tile">
                 <input type="range" id="dim-range" min="0" max="1" step="0.01" value="0.5" oninput="containerDim()">
                 <span id="dim-value">0.5</span>
             </div>
-            <div class="setting-tile">
-                <div class="checkbox-wrapper-22"><label class="switch" for="checkbox"><input type="checkbox"
-                            id="checkbox" />
-                        <div class="slider round"></div>
-                    </label></div>
-            </div>
-
+            <!-- <div class="setting-tile">
+                <div class="setting-checkbox">
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div> -->
         </div>
+    </div>
+
+    </div>
     </div>
 
 
