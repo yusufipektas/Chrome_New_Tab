@@ -21,9 +21,8 @@ const dayNames = [
   "Saturday",
   "Sunday",
 ];
+const a = new Date();
 setInterval(() => {
-  const a = new Date();
-  // Getting clock
   let hour = 0,
     bHour = a.getHours(),
     min = 0,
@@ -35,7 +34,7 @@ setInterval(() => {
     month = monthNames[bMonth - 1],
     year = a.getFullYear();
 
-  // clock timer to 12
+  // Time to 12
   if (bHour === 0) {
     hour = 12;
   } else if (bHour > 12) {
@@ -94,11 +93,27 @@ function searchGoogle(event) {
   window.location.href = googleSearchUrl;
 }
 
+// <--------------------Setting-------------------->
+let container = document.getElementById("container");
+
+// Show Setting
+function openSetting() {
+  document.getElementById("setting-box").style.width = "400px";
+  document.getElementById("setting-box").style.borderRight =
+    "1px solid rgb(255, 255, 255, .5)";
+}
+
+// Close Setting
+function closeSetting() {
+  document.getElementById("setting-box").style.width = "0px";
+  document.getElementById("setting-box").style.borderRight = "0px";
+}
+
 // checkbox
 function check() {
   let checkBox = document.getElementById("checkbox"),
     searchContainer = document.getElementById("search-container");
-  if (checkBox.checked == true) {
+  if (checkBox.checked === true) {
     searchContainer.style.display = "block";
   } else {
     searchContainer.style.display = "none";
