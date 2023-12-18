@@ -23,14 +23,18 @@ const dayNames = [
 ];
 setInterval(() => {
   const a = new Date();
+  // Getting clock
   let bHour = a.getHours(),
+    hour = 0,
     bMin = a.getMinutes(),
+    min = 0,
     bday = a.getDay(),
     day = dayNames[bday - 1],
     date = a.getDate(),
     bMonth = a.getMonth(),
     month = monthNames[bMonth - 1],
     year = a.getFullYear();
+
   // clock timer to 12
   if (bHour === 0) {
     hour = 12;
@@ -49,6 +53,7 @@ setInterval(() => {
     monthID = document.getElementById("month"),
     yearID = document.getElementById("year"),
     dayTimeID = document.getElementById("dayTime");
+
   // day-time setting
   if (bHour >= 5 && bHour < 12) {
     dayTimeID.innerHTML = "Morning";

@@ -7,11 +7,12 @@
     <link rel="shortcut icon" href="/Images/chrome.svg" type="image/x-icon">
     <title>New Tab</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="utilities.css">
     <script src=" https://kit.fontawesome.com/4c582ec221.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" id="container">
         <div class="main-container">
             <!-- clock -->
             <div class="clock-container">
@@ -37,84 +38,118 @@
         <div class="bookmarks-container">
             <a href="https://youtube.com" class="bookmark">
                 <div class="bookmark-icon youtube">
-                    <img src="http://alihamas.com/projects/chrome_new_tab/Images/youtube.svg" width="30px">
+                    <img src="Images/youtube.svg" width="30px">
                 </div>
                 <div class="bookmark-title">YouTube</div>
             </a>
             <a href="https://twitter.com" class="bookmark">
                 <div class="bookmark-icon twitter">
-                    <img src="http://alihamas.com/projects/chrome_new_tab/Images/twitter.svg" width="25px">
+                    <img src="Images/twitter.svg" width="25px">
                 </div>
                 <div class="bookmark-title">Twitter</div>
             </a>
             <a href="https://instagram.com" class="bookmark">
                 <div class="bookmark-icon instagram">
-                    <img src="http://alihamas.com/projects/chrome_new_tab/Images/instagram.svg" width="25px">
+                    <img src="Images/instagram.svg" width="25px">
                 </div>
                 <div class="bookmark-title">Instagram</div>
             </a>
             <a href="https://facebook.com" class="bookmark">
                 <div class="bookmark-icon facebook">
-                    <img src="http://alihamas.com/projects/chrome_new_tab/Images/facebook.svg" width="26px">
+                    <img src="Images/facebook.svg" width="26px">
                 </div>
                 <div class="bookmark-title">FaceBook</div>
             </a>
             <a href="https://linkedin.com" class="bookmark">
                 <div class="bookmark-icon linkedin">
-                    <img src="http://alihamas.com/projects/chrome_new_tab/Images/linkedin.svg" width="22px">
+                    <img src="Images/linkedin.svg" width="22px">
                 </div>
                 <div class="bookmark-title">LinkedIn</div>
             </a>
             <a href="https://github.com" class="bookmark">
                 <div class="bookmark-icon github">
-                    <img src="http://alihamas.com/projects/chrome_new_tab/Images/github.svg" width="30px">
+                    <img src="Images/github.svg" width="30px">
                 </div>
                 <div class="bookmark-title">GitHub</div>
             </a>
             <a href="https://chat.openai.com/" class="bookmark">
                 <div class="bookmark-icon">
-                    <img src="http://alihamas.com/projects/chrome_new_tab/Images/chatgpt.webp" width="50px">
+                    <img src="Images/chatgpt.webp" width="50px">
                 </div>
                 <div class="bookmark-title">Chat GPT</div>
             </a>
             <a href="https://mail.google.com/mail/" class="bookmark">
                 <div class="bookmark-icon">
-                    <img src="http://alihamas.com/projects/chrome_new_tab/Images/gmail.png" width="25px">
+                    <img src="Images/gmail.png" width="25px">
                 </div>
                 <div class="bookmark-title">Gmail</div>
             </a>
         </div>
-        <div id="gmail-box">
-
-        </div>
-        <!-- Day & Date -->
-        <div class="dayDate-container">
-            <div class="day-container">
-                <span id="day"></span>
-            </div>
-            <div class="date-container">
-                <span id="month"></span>
-                <span id="date"></span>
-                <span id="year"></span>
-            </div>
-        </div>
-        <!-- Setting -->
-        <div id="setting">
-            <i class="fa-solid fa-gear"></i>
-            <div id="setting-box">
-                <div class="checkbox">
-                    <input type="checkbox" id="checkbox" onclick="check()" checked>
-                    <label for="checkbox">Search</label>
-                </div>
-            </div>
-        </div>
-
-
-
-
 
     </div>
+    <!-- Day & Date -->
+    <div class="dayDate-container">
+        <div class="day-container">
+            <span id="day"></span>
+        </div>
+        <div class="date-container">
+            <span id="month"></span>
+            <span id="date"></span>
+            <span id="year"></span>
+        </div>
+    </div>
+    <!-- Setting -->
+    <i class="fa-solid fa-gear setting-icons" id="open-setting" onclick="openSetting()"></i>
+    </div>
+    <div id="setting-box">
+        <i class="fa-solid fa-xmark setting-icons" id="close-setting" onclick="closeSetting()"></i>
+        <div class="setting-inner">
+
+
+            <div class="setting-tile">
+                <input type="checkbox" id="search-checkbox" onclick="check()" checked>
+                <label for="search-checkbox">Search</label>
+            </div>
+            <div class="setting-tile">
+                <input type="range" id="dim-range" min="0" max="1" step="0.01" value="0.5" oninput="containerDim()">
+                <span id="dim-value">0.5</span>
+            </div>
+            <div class="setting-tile">
+                <div class="checkbox-wrapper-22"><label class="switch" for="checkbox"><input type="checkbox"
+                            id="checkbox" />
+                        <div class="slider round"></div>
+                    </label></div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <script>
+        function openSetting() {
+            document.getElementById("setting-box").style.width = "400px";
+            document.getElementById("setting-box").style.borderRight = "1px solid rgb(255, 255, 255, .5)";
+        }
+        function closeSetting() {
+            document.getElementById("setting-box").style.width = "0px"
+            document.getElementById("setting-box").style.borderRight = "0px";
+        }
+    </script>
+
+
     <script src="/script.js"></script>
+    <script>
+        let container = document.getElementById("container");
+        function containerDim() {
+            var dimRange = document.getElementById("dim-range").value;
+            var dimValue = document.getElementById("dim-value");
+            container.style.backgroundColor = `rgba(0, 0, 0, ${dimRange})`;
+            let roundedvalue = Math.round(dimRange * 100);
+            dimValue.innerHTML = roundedvalue;
+        }
+
+    </script>
 </body>
 
 </html>

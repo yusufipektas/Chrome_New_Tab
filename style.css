@@ -1,36 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
-
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-    font-size: 1rem;
-    text-decoration: none;
-    color: white;
-}
-
-html {
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
 body {
     width: 100%;
     height: 100vh;
     position: relative;
-}
-
-body::before {
-    content: "";
-    background: url("/Images/bg_img.jpg") center;
+    background: url("/Images/bg_img.jpg") no-repeat center;
     background-size: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
     z-index: -1;
 }
 
@@ -69,7 +42,7 @@ body::before {
 }
 
 #zone {
-    font-size: 50px;
+    font-size: 60px;
 }
 
 /* name container */
@@ -89,7 +62,7 @@ form {
     position: relative;
 }
 
-input[type="text"] {
+form input[type="text"] {
     width: 100%;
     padding: 10px;
     padding-left: 40px;
@@ -209,43 +182,55 @@ form i.fa-microphone {
 }
 
 /* Setting */
-#setting {
+#open-setting {
     position: fixed;
     bottom: 40px;
     left: 40px;
 }
 
-#setting i {
-    font-size: 20px;
+
+.setting-icons {
+    font-size: 24px;
     cursor: pointer;
-    color: #ccc;
+    color: rgba(255, 255, 255, 0.8);
+    transition: all .2s ease;
 }
 
-#setting i:hover {
+.setting-icons:hover {
     color: white;
 }
 
+#close-setting {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 28px;
+}
+
+
+/* Setting Box */
 #setting-box {
-    width: 200px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid rgb(255, 255, 255, .5);
+    width: 0px;
+    height: 200vh;
     background: rgba(255, 255, 255, 0.25);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    position: absolute;
-    bottom: 35px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    transition: all .5s ease;
+    overflow-x: hidden;
 }
 
-.checkbox {
+.setting-inner {
+    padding: 30px;
+}
+
+
+
+.setting-tile {
     display: flex;
     gap: 5px;
     cursor: pointer;
     width: 100%;
-}
-
-#gmail-box {
-    width: 800px;
-    height: 500px;
-    background-color: white;
 }
