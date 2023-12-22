@@ -127,7 +127,7 @@ form input[type="search"] {
 .bookmark-icon {
     width: 50px;
     height: 50px;
-    border-radius: 10px;
+    border-radius: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -171,6 +171,7 @@ form input[type="search"] {
 }
 
 .setting-icons {
+    font-size: 28px;
     cursor: pointer;
     color: rgba(255, 255, 255, 0.8);
     transition: all .2s ease;
@@ -183,7 +184,7 @@ form input[type="search"] {
 /* Setting Box */
 #setting-box {
     width: 0px;
-    height: 200vh;
+    height: 100vh;
     background: rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(10px);
     position: fixed;
@@ -191,31 +192,14 @@ form input[type="search"] {
     top: 0;
     transition: all .3s ease;
     overflow-x: hidden;
-    overflow-y: auto;
 }
 
 .setting-inner {
-    padding: 30px;
-}
-
-/* Setting Title */
-.setting-title {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 20px;
+    flex-direction: column;
+    padding: 15px 30px;
+    gap: 10px;
 }
-
-.setting-title h1 {
-    font-size: 28px;
-    font-weight: 500;
-}
-
-.setting-title #close-setting {
-    font-size: 28px;
-}
-
 
 /* Setting Tile */
 .setting-tile {
@@ -223,4 +207,9 @@ form input[type="search"] {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+}
+
+.setting-tile h1 {
+    font-size: 28px;
+    font-weight: 600;
 }

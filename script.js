@@ -37,7 +37,7 @@ let a = new Date(),
   bMonth = a.getMonth(),
   month = monthNames[bMonth - 1],
   year = a.getFullYear(),
-  // Selecting ID's
+  // Selecting Clock ID's
   hourID = document.getElementById("hour"),
   minID = document.getElementById("min"),
   zoneID = document.getElementById("zone"),
@@ -113,19 +113,20 @@ function searchGoogle(event) {
 }
 
 // <--------------------Setting-------------------->
-let container = document.getElementById("container");
+
+// Selecting ID's
+let container = document.getElementById("container"),
+  settingBox = document.getElementById("setting-box");
 
 // Show Setting
 function openSetting() {
-  document.getElementById("setting-box").style.width = "400px";
-  document.getElementById("setting-box").style.borderRight =
-    "1px solid rgb(255, 255, 255, .5)";
+  settingBox.style.width = "400px";
+  settingBox.style.borderRight = "1px solid rgb(255, 255, 255, .5)";
 }
-
 // Close Setting
 function closeSetting() {
-  document.getElementById("setting-box").style.width = "0px";
-  document.getElementById("setting-box").style.borderRight = "0px";
+  settingBox.style.width = "0px";
+  settingBox.style.borderRight = "0px";
 }
 
 // checkbox
@@ -138,3 +139,9 @@ function check() {
     searchContainer.style.display = "none";
   }
 }
+
+function hello(element) {
+  element.style.borderRadius = "50%";
+}
+let z = document.querySelectorAll(".bookmark-icon");
+z.forEach(hello);
