@@ -37,38 +37,43 @@
         <div class="bookmarks-container">
             <a href="https://youtube.com" class="bookmark">
                 <div class="bookmark-icon">
-                    <img src="https://cdn-icons-png.flaticon.com/128/1384/1384060.png" width="30px">
+                    <img src="https://cdn-icons-png.flaticon.com/128/4423/4423697.png" width="60%">
+                </div>
+                <div class="bookmark-title">WhatsApp</div>
+            </a>
+            <a href="https://youtube.com" class="bookmark">
+                <div class="bookmark-icon">
+                    <img src="https://cdn-icons-png.flaticon.com/128/1384/1384060.png" width="70%">
                 </div>
                 <div class="bookmark-title">YouTube</div>
             </a>
             <a href="https://twitter.com" class="bookmark">
                 <div class="bookmark-icon">
-                    <!-- <img src="https://cdn-icons-png.flaticon.com/128/733/733579.png" width="30px"> -->
-                    <img src="https://cdn-icons-png.flaticon.com/128/5968/5968958.png" width="50%">
+                    <img src="https://cdn-icons-png.flaticon.com/128/733/733579.png" width="65%">
                 </div>
                 <div class="bookmark-title">Twitter</div>
             </a>
             <a href="https://instagram.com" class="bookmark">
                 <div class="bookmark-icon">
-                    <img src="https://cdn-icons-png.flaticon.com/128/4138/4138124.png" width="120%">
+                    <img src="https://cdn-icons-png.flaticon.com/128/3621/3621435.png" width="100%">
                 </div>
                 <div class="bookmark-title">Instagram</div>
             </a>
             <a href="https://facebook.com" class="bookmark">
                 <div class="bookmark-icon">
-                    <img src="https://cdn-icons-png.flaticon.com/128/5968/5968764.png" width="105%">
+                    <img src="https://cdn-icons-png.flaticon.com/128/5968/5968764.png" width="70%">
                 </div>
                 <div class="bookmark-title">FaceBook</div>
             </a>
             <a href="https://linkedin.com" class="bookmark">
                 <div class="bookmark-icon">
-                    <img src="https://cdn-icons-png.flaticon.com/128/4494/4494497.png" width="105%">
+                    <img src="https://cdn-icons-png.flaticon.com/128/145/145807.png" width="80%">
                 </div>
                 <div class="bookmark-title">LinkedIn</div>
             </a>
             <a href="https://github.com" class="bookmark">
                 <div class="bookmark-icon">
-                    <img src="https://cdn-icons-png.flaticon.com/128/3291/3291695.png" width="100%">
+                    <img src="https://cdn-icons-png.flaticon.com/128/2111/2111425.png" width="70%">
                 </div>
                 <div class="bookmark-title">GitHub</div>
             </a>
@@ -110,13 +115,13 @@
     <div id="setting-box">
         <div class="setting-inner">
             <!-- setting tiles -->
-            <div class="setting-tile">
+            <div class="setting-title">
                 <h1>Settings</h1>
                 <i class="fa-solid fa-xmark setting-icons" id="close-setting" onclick="closeSetting()"></i>
             </div>
             <div class="setting-tile">
                 <input type="range" id="dim-range" min="0" max="1" step="0.01" value="0.5" oninput="containerDim()">
-                <span id="dim-value">0.5</span>
+                <span id="dim-value">50</span>
             </div>
             <!-- <div class="setting-tile">
                 <div class="setting-checkbox">
@@ -137,8 +142,8 @@
 
     <script>
         function containerDim() {
-            var dimRange = document.getElementById("dim-range").value;
-            var dimValue = document.getElementById("dim-value");
+            let dimRange = document.getElementById("dim-range").value;
+            let dimValue = document.getElementById("dim-value");
             container.style.backgroundColor = `rgba(0, 0, 0, ${dimRange})`;
             let roundedvalue = Math.round(dimRange * 100);
             dimValue.innerHTML = roundedvalue;

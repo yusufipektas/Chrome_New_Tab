@@ -115,7 +115,7 @@ form input[type="search"] {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    transition: all .3s ease;
+    transition: all .2s ease;
 }
 
 .bookmark:hover {
@@ -127,6 +127,7 @@ form input[type="search"] {
     width: 50px;
     height: 50px;
     border-radius: 50%;
+    border-radius: 10px;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -137,31 +138,6 @@ form input[type="search"] {
 .bookmark .bookmark-title {
     font-size: 13px;
 }
-
-/* .youtube {
-    background-color: white;
-}
-
-.twitter {
-    background-color: black;
-}
-
-.instagram {
-    background: #d6249f;
-    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-}
-
-.facebook {
-    background-color: #0766FF;
-}
-
-.linkedin {
-    background-color: #1969C6;
-}
-
-.github {
-    background-color: white;
-} */
 
 /* dayDate container */
 .dayDate-container {
@@ -186,18 +162,17 @@ form input[type="search"] {
     position: fixed;
     bottom: 40px;
     left: 40px;
+    font-size: 24px;
 }
 
-
 .setting-icons {
-    font-size: 24px;
     cursor: pointer;
     color: rgba(255, 255, 255, 0.8);
     transition: all .2s ease;
 }
 
 .setting-icons:hover {
-    color: white;
+    color: rgba(255, 255, 255);
 }
 
 
@@ -211,17 +186,28 @@ form input[type="search"] {
     position: fixed;
     left: 0;
     top: 0;
-    transition: all .5s ease;
+    transition: all .3s ease;
     overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .setting-inner {
     padding: 30px;
 }
 
-.setting-tile {
+.setting-title {
     display: flex;
-    gap: 5px;
-    cursor: pointer;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
+    margin-bottom: 20px;
+}
+
+.setting-title h1 {
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.setting-title #close-setting {
+    font-size: 28px;
 }
