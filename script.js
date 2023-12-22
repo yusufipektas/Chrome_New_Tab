@@ -1,3 +1,4 @@
+// Year Names
 const monthNames = [
   "Jan",
   "Feb",
@@ -12,6 +13,8 @@ const monthNames = [
   "Nov",
   "Dec",
 ];
+
+// Day Names
 const dayNames = [
   "Monday",
   "Tuesday",
@@ -21,20 +24,31 @@ const dayNames = [
   "Saturday",
   "Sunday",
 ];
-const a = new Date();
-setInterval(() => {
-  let hour = 0,
-    bHour = a.getHours(),
-    min = 0,
-    bMin = a.getMinutes(),
-    bDay = a.getDay(),
-    day = dayNames[bDay - 1],
-    date = a.getDate(),
-    bMonth = a.getMonth(),
-    month = monthNames[bMonth - 1],
-    year = a.getFullYear();
 
-  // Time to 12
+// Getting Date
+let a = new Date(),
+  bHour = a.getHours(),
+  hour = 0,
+  bMin = a.getMinutes(),
+  min = 0,
+  bDay = a.getDay(),
+  day = dayNames[bDay - 1],
+  date = a.getDate(),
+  bMonth = a.getMonth(),
+  month = monthNames[bMonth - 1],
+  year = a.getFullYear(),
+  // Selecting ID's
+  hourID = document.getElementById("hour"),
+  minID = document.getElementById("min"),
+  zoneID = document.getElementById("zone"),
+  dayID = document.getElementById("day"),
+  dateID = document.getElementById("date"),
+  monthID = document.getElementById("month"),
+  yearID = document.getElementById("year"),
+  dayTimeID = document.getElementById("dayTime");
+
+//Hour format
+function hourFormat() {
   if (bHour === 0) {
     hour = 12;
   } else if (bHour > 12) {
@@ -42,18 +56,19 @@ setInterval(() => {
   } else {
     hour = bHour;
   }
+}
 
-  // Selecting ID's
-  let hourID = document.getElementById("hour"),
-    minID = document.getElementById("min"),
-    zoneID = document.getElementById("zone"),
-    dayID = document.getElementById("day"),
-    dateID = document.getElementById("date"),
-    monthID = document.getElementById("month"),
-    yearID = document.getElementById("year"),
-    dayTimeID = document.getElementById("dayTime");
+// Time Zone
+function timeZone() {
+  if (bHour > 11) {
+    zoneID.innerHTML = "PM";
+  } else {
+    zoneID.innerHTML = "AM";
+  }
+}
 
-  // day-time setting
+// Day Time
+function dayTime() {
   if (bHour >= 5 && bHour < 12) {
     dayTimeID.innerHTML = "Morning";
   } else if (bHour >= 12 && bHour < 16) {
@@ -63,19 +78,23 @@ setInterval(() => {
   } else {
     dayTimeID.innerHTML = "Night";
   }
-  // Adding 0 to min
+}
+
+// Adding 0 to minutes
+function min0() {
   if (bMin < 10) {
     min = `0${bMin}`;
   } else {
     min = bMin;
   }
-  // adding pm am
-  if (bHour > 11) {
-    zoneID.innerHTML = "PM";
-  } else {
-    zoneID.innerHTML = "AM";
-  }
-  // printing clock
+}
+
+setInterval(() => {
+  timeZone();
+  hourFormat();
+  dayTime();
+  min0();
+
   hourID.innerHTML = hour;
   minID.innerHTML = min;
   dayID.innerHTML = day;
