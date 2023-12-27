@@ -106,7 +106,7 @@ setInterval(() => {
 // Google Search Form
 function searchGoogle(event) {
   event.preventDefault();
-  var userInput = document.getElementById("search").value;
+  var userInput = document.getElementById("search-input").value;
   var googleSearchUrl =
     "https://www.google.com/search?q=" + encodeURIComponent(userInput);
   window.location.href = googleSearchUrl;
@@ -121,12 +121,12 @@ let container = document.getElementById("container"),
 // Show Setting
 function openSetting() {
   settingBox.style.width = "400px";
-  settingBox.style.borderRight = "1px solid rgb(255, 255, 255, .5)";
+  // settingBox.style.borderRight = "1px solid rgb(255, 255, 255, .5)";
 }
 // Close Setting
 function closeSetting() {
   settingBox.style.width = "0px";
-  settingBox.style.borderRight = "0px";
+  // settingBox.style.borderRight = "0px";
 }
 
 // checkbox
@@ -140,8 +140,8 @@ function check() {
   }
 }
 
-function hello(element) {
-  element.style.borderRadius = "50%";
-}
-let z = document.querySelectorAll(".bookmark-icon");
-z.forEach(hello);
+// function hello(element) {
+//   element.style.borderRadius = "50%";
+// }
+// let z = document.querySelectorAll(".bookmark-icon");
+// z.forEach(hello);
