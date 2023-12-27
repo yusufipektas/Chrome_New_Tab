@@ -140,8 +140,8 @@ function check() {
   }
 }
 
-// function hello(element) {
-//   element.style.borderRadius = "50%";
-// }
-// let z = document.querySelectorAll(".bookmark-icon");
-// z.forEach(hello);
+function hello(element) {
+  element.style.borderRadius = "50%";
+}
+let z = document.querySelectorAll(".bookmark-icon");
+z.forEach(hello);
