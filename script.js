@@ -129,6 +129,27 @@ function closeSetting() {
   // settingBox.style.borderRight = "0px";
 }
 
+// Container Dim
+function containerDim() {
+  let dimRange = document.getElementById("dim-range").value;
+  let dimValue = document.getElementById("dim-value");
+  container.style.backgroundColor = `rgba(0, 0, 0, ${dimRange})`;
+  let roundedDimValue = Math.round(dimRange * 100);
+  dimValue.innerHTML = `${roundedDimValue}%`;
+
+  localStorage.setItem("dim", dimRange);
+}
+
+// Container Blur
+function containerBlur() {
+  let blurRange = document.getElementById("blur-range").value;
+  let blurValue = document.getElementById("blur-value");
+  container.style.backdropFilter = `blur(${blurRange}px)`;
+  blurValue.innerHTML = `${blurRange}%`;
+
+  localStorage.setItem("blur", blurRange);
+}
+
 // checkbox
 function check() {
   let checkBox = document.getElementById("checkbox"),
