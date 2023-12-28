@@ -116,12 +116,13 @@ form input[type="search"] {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    transition: all .2s ease;
+    background-color: transparent;
     overflow: hidden;
+    transition: background .5s;
 }
 
 .bookmark:hover {
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(10px);
 }
 
@@ -186,9 +187,7 @@ form input[type="search"] {
 /* Setting Box */
 #setting-box {
     width: 0px;
-    height: 100vh;
-    /* background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(10px); */
+    height: auto;
     background-color: transparent;
     position: fixed;
     left: 0;
@@ -199,58 +198,46 @@ form input[type="search"] {
 }
 
 .setting-inner {
+    width: 100%;
+    min-width: 350px;
+    padding: 15px 0 0 15px;
     display: flex;
     flex-direction: column;
-    padding: 15px 30px;
-    gap: 10px;
-    width: 100%;
-    min-width: 400px;
+    gap: 15px;
 }
 
-.setting-head {
+.setting-section {
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+    flex-direction: column;
+    gap: 15px;
 }
 
-.setting-head h1 {
+h2.setting-sec-heading {
     font-size: 28px;
-    font-weight: 600;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 5px;
 }
 
-/* Setting Tile */
-.setting-tile {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-.setting-tile h3 {
+h3.setting-tile-heading {
     font-size: 16px;
     font-weight: 400;
 }
 
-/* Setting tile with Heading */
+/* Setting tile */
 .setting-tile-withHeading {
     display: flex;
     flex-direction: column;
-    gap: 10px;
 }
 
-.setting-tile-withHeading h3 {
-    font-size: 16px;
-    font-weight: 400;
-}
-
-.setting-tile-withHeading .setting-content {
+.setting-tile .setting-tile-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.setting-content input[type="range"] {
-    width: 250px;
-    cursor: pointer;
 }

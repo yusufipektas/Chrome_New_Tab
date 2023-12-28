@@ -116,18 +116,23 @@ function searchGoogle(event) {
 
 // Selecting ID's
 let container = document.getElementById("container"),
-  settingBox = document.getElementById("setting-box");
+  settingBox = document.getElementById("setting-box"),
+  openSetting = document.getElementById("open-setting");
 
 // Show Setting
 function openSetting() {
-  settingBox.style.width = "400px";
-  // settingBox.style.borderRight = "1px solid rgb(255, 255, 255, .5)";
+  settingBox.style.width = "350px";
 }
 // Close Setting
 function closeSetting() {
   settingBox.style.width = "0px";
-  // settingBox.style.borderRight = "0px";
 }
+
+window.onclick = function (event) {
+  if (event.target !== settingBox && event.target !== openSetting) {
+    closeSetting();
+  }
+};
 
 // Container Dim
 function containerDim() {
@@ -161,8 +166,16 @@ function check() {
   }
 }
 
+// Border Radius
 function hello(element) {
   element.style.borderRadius = "50%";
 }
 let z = document.querySelectorAll(".bookmark-icon");
 z.forEach(hello);
+
+// New Tab
+function helloac(element) {
+  element.setAttribute("target", "_blank");
+}
+let ac = document.querySelectorAll(".bookmark");
+ac.forEach(helloac);
