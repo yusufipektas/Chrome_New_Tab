@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Clock</title>
+</head>
+
+<body>
+    <label>
+        <input type="checkbox" id="showClockCheckbox"> Show Clock
+    </label>
+    <div id="clock" style="display: none;">
+        <!-- Your clock content goes here -->
+        Clock Content
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Retrieve the checkbox state from localStorage
+            const showClockCheckbox = document.getElementById("showClockCheckbox");
+            const clock = document.getElementById("clock");
+
+            // Set the initial state based on the stored value
+            showClockCheckbox.checked = localStorage.getItem("showClock") === "true";
+            updateClockVisibility();
+
+            // Add a change event listener to the checkbox
+            showClockCheckbox.addEventListener("change", function () {
+                // Store the checkbox state in localStorage
+                localStorage.setItem("showClock", showClockCheckbox.checked);
+
+                // Update the clock visibility
+                updateClockVisibility();
+            });
+
+            function updateClockVisibility() {
+                // Show or hide the clock based on the checkbox state
+                clock.style.display = showClockCheckbox.checked ? "block" : "none";
+            }
+        });
+    </script>
+</body>
+
+</html>

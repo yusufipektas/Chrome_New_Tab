@@ -117,19 +117,27 @@ function searchGoogle(event) {
 // Selecting ID's
 let container = document.getElementById("container"),
   settingBox = document.getElementById("setting-box"),
-  openSetting = document.getElementById("open-setting");
+  openSettingBtn = document.getElementById("open-setting");
 
 // Show Setting
 function openSetting() {
   settingBox.style.width = "350px";
+  setTimeout(() => {
+    openSettingBtn.style.display = "none";
+  }, 100);
 }
 // Close Setting
 function closeSetting() {
   settingBox.style.width = "0px";
+  setTimeout(() => {
+    openSettingBtn.style.display = "block";
+  }, 300);
 }
 
+// Close Setting on Outside Click
 window.onclick = function (event) {
-  if (event.target !== settingBox && event.target !== openSetting) {
+  var clickInsideSetting = event.target.closest("#setting-box") !== null;
+  if (!clickInsideSetting && event.target !== openSettingBtn) {
     closeSetting();
   }
 };
@@ -155,14 +163,20 @@ function containerBlur() {
   localStorage.setItem("blur", blurRange);
 }
 
-// checkbox
-function check() {
-  let checkBox = document.getElementById("checkbox"),
-    searchContainer = document.getElementById("search-container");
-  if (checkBox.checked === true) {
-    searchContainer.style.display = "block";
+// Show Hide Time
+let timeCheckbox = document.getElementById("time-checkbox"),
+  timeContainer = document.getElementById("time-container");
+function showHideTime() {
+  if (timeCheckbox.checked === true) {
+    timeContainer.style.height = "125px";
+    timeContainer.style.paddingTop = "20px";
+    localStorage.setItem("timeHeight", timeContainer.style.height);
+    localStorage.setItem("timePaddingTop", timeContainer.style.paddingTop);
   } else {
-    searchContainer.style.display = "none";
+    timeContainer.style.height = "0";
+    timeContainer.style.paddingTop = "0";
+    localStorage.setItem("timeHeight", timeContainer.style.height);
+    localStorage.setItem("timePaddingTop", timeContainer.style.paddingTop);
   }
 }
 
