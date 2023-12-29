@@ -120,11 +120,12 @@ let container = document.getElementById("container"),
   settingBox = document.getElementById("setting-box"),
   openSettingBtn = document.getElementById("open-setting");
 
-// Show Setting
 function openSetting() {
+  console.log("setting clicked");
   settingBox.style.width = "350px";
   openSettingBtn.style.display = "none";
 }
+
 // Close Setting
 function closeSetting() {
   settingBox.style.width = "0px";

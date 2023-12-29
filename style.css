@@ -186,22 +186,19 @@ form input[type="search"] {
 }
 
 /* Setting */
-#open-setting {
+svg#open-setting {
     position: fixed;
-    bottom: 40px;
-    left: 40px;
-    font-size: 24px;
-}
-
-.setting-icons {
-    font-size: 28px;
+    bottom: 30px;
+    left: 30px;
+    height: 24px;
+    width: 24px;
+    fill: rgba(255, 255, 255, 0.8);
     cursor: pointer;
-    color: rgba(255, 255, 255, 0.8);
-    transition: all .2s ease;
+    transition: all .3s ease;
 }
 
-.setting-icons:hover {
-    color: rgba(255, 255, 255);
+#open-setting:hover {
+    fill: rgba(255, 255, 255);
 }
 
 /* Setting Box */
