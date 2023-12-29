@@ -167,18 +167,18 @@ function containerBlur() {
 let timeCheckbox = document.getElementById("time-checkbox"),
   timeContainer = document.getElementById("time-container");
 function showHideTime() {
-  if (timeCheckbox.checked === true) {
-    timeContainer.style.height = "125px";
-    timeContainer.style.paddingTop = "20px";
-    localStorage.setItem("timeHeight", timeContainer.style.height);
-    localStorage.setItem("timePaddingTop", timeContainer.style.paddingTop);
-  } else {
-    timeContainer.style.height = "0";
-    timeContainer.style.paddingTop = "0";
-    localStorage.setItem("timeHeight", timeContainer.style.height);
-    localStorage.setItem("timePaddingTop", timeContainer.style.paddingTop);
-  }
+  const timeContainerHeight = timeCheckbox.checked ? "125px" : "0";
+  const timeContainerPaddingTop = timeCheckbox.checked ? "20px" : "0";
+
+  timeContainer.style.height = timeContainerHeight;
+  timeContainer.style.paddingTop = timeContainerPaddingTop;
+
+  localStorage.setItem(
+    "timeShowHide",
+    JSON.stringify({ timeContainerHeight, timeContainerPaddingTop })
+  );
 }
+timeCheckbox.addEventListener("change", showHideTime);
 
 // Border Radius
 function hello(element) {

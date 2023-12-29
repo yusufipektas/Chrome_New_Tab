@@ -120,9 +120,9 @@
                 <div class="setting-tile setting-tile-withHeading">
                     <h3 class="setting-tile-heading">Dim the Wallpaper</h3>
                     <div class="setting-tile-content">
-                        <input type="range" id="dim-range" min="0" max="1" step="0.01" value="0.2"
+                        <input type="range" id="dim-range" min="0" max="1" step="0.01" value="0.3"
                             oninput="containerDim()">
-                        <div id="dim-value">20</div>
+                        <div id="dim-value">30</div>
                     </div>
                 </div>
                 <div class="setting-tile setting-tile-withHeading">
@@ -142,7 +142,22 @@
                         <h3 class="setting-tile-heading">Time</h3>
                         <div class="setting-checkbox">
                             <label class="switch">
-                                <input type="checkbox" id="time-checkbox" onclick="showHideTime()" checked>
+                                <input type="checkbox" id="time-checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Search Setting Section -->
+            <div class="setting-section">
+                <h2 class="setting-sec-heading">Search</h2>
+                <div class="setting-tile">
+                    <div class="setting-tile-content">
+                        <h3 class="setting-tile-heading">Search Bar</h3>
+                        <div class="setting-checkbox">
+                            <label class="switch">
+                                <input type="checkbox" id="search-checkbox" checked>
                                 <span class="slider round"></span>
                             </label>
                         </div>
@@ -169,12 +184,6 @@
             if (savedBlurValue !== null) {
                 document.getElementById("blur-range").value = savedBlurValue;
                 containerBlur();
-            }
-            const savedTimeHeight = localStorage.getItem("timeHeight");
-            const savedTimePadding = localStorage.getItem("timePaddingTop")
-            if (savedTimePadding !== null) {
-                document.getElementById("time-container").style.height = savedTimeHeight;
-                document.getElementById("time-container").style.paddingTop = savedTimePadding;
             }
         });
     </script>
