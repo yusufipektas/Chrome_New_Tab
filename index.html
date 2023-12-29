@@ -13,18 +13,18 @@
 
 <body>
     <div id="container">
-        <!-- clock -->
+        <!-- Time Container -->
         <div id="time-container">
             <span id="hour">12</span>
             <span id="dots">:</span>
             <span id="min">00</span>
             <span id="zone">AM</span>
         </div>
-        <!-- name -->
-        <div id="name-container">
-            <h1>Good <span id="dayTime">Morning</span>, <span id="name">Ali Hamas</span></h1>
+        <!-- Message Container -->
+        <div id="msg-container">
+            <h1>Good <span id="dayTime">Morning</span><span id="comma">, </span><span id="name">Ali Hamas</span></h1>
         </div>
-        <!-- search -->
+        <!-- Search Container -->
         <div id="search-container">
             <form onsubmit="searchGoogle(event)" autocomplete="off">
                 <label for="search-input">
@@ -33,7 +33,7 @@
                 <input type="search" id="search-input" minlength="1" placeholder="Search Google">
             </form>
         </div>
-        <!-- BookMarks -->
+        <!-- Shortcut Container -->
         <div class="bookmarks-container">
             <a href="https://web.whatsapp.com/" class="bookmark">
                 <div class="bookmark-icon">
@@ -98,7 +98,7 @@
         </div>
 
     </div>
-    <!-- Day & Date -->
+    <!-- Day & Date Container -->
     <div class="dayDate-container">
         <div class="day-container">
             <span id="day"></span>
@@ -109,7 +109,7 @@
             <span id="year"></span>
         </div>
     </div>
-    <!-- Setting -->
+    <!----------------------------------------  Setting  ---------------------------------------->
     <i class="fa-solid fa-gear setting-icons" id="open-setting" onclick="openSetting()"></i>
     </div>
     <div id="setting-box">
@@ -149,6 +149,21 @@
                     </div>
                 </div>
             </div>
+            <!-- Message Setting Section -->
+            <div class="setting-section">
+                <h2 class="setting-sec-heading">Message</h2>
+                <div class="setting-tile">
+                    <div class="setting-tile-content">
+                        <h3 class="setting-tile-heading">Message</h3>
+                        <div class="setting-checkbox">
+                            <label class="switch">
+                                <input type="checkbox" id="msg-checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- Search Setting Section -->
             <div class="setting-section">
                 <h2 class="setting-sec-heading">Search</h2>
@@ -171,21 +186,60 @@
 
 
     <script src="/script.js"></script>
-
-
     <script>
         document.addEventListener("DOMContentLoaded", function () {
+            // Dim Container
             const savedDimValue = localStorage.getItem("dim");
             if (savedDimValue !== null) {
                 document.getElementById("dim-range").value = savedDimValue;
                 containerDim();
             }
+            // Blur Container
             const savedBlurValue = localStorage.getItem("blur");
             if (savedBlurValue !== null) {
                 document.getElementById("blur-range").value = savedBlurValue;
                 containerBlur();
             }
+            // Time Container Visibility
+            const savedTimeVisibility = localStorage.getItem("timeContVisibility");
+            if (savedTimeVisibility !== null) {
+                const {
+                    timeContHeight,
+                    timeContPaddingTop,
+                    timeContMarginBottom,
+                    timeChecked,
+                } = JSON.parse(savedTimeVisibility);
+                timeContainer.style.height = timeContHeight;
+                timeContainer.style.paddingTop = timeContPaddingTop;
+                timeContainer.style.marginBottom = timeContMarginBottom;
+                timeCheckbox.checked = timeChecked;
+            }
+            // Message Container Visibility
+            const savedMsgVisibility = localStorage.getItem("msgContVisibility");
+            if (savedMsgVisibility !== null) {
+                const {
+                    msgContHeight,
+                    msgContMarginBottom,
+                    msgChecked,
+                } = JSON.parse(savedMsgVisibility);
+                msgContainer.style.height = msgContHeight;
+                msgContainer.style.marginBottom = msgContMarginBottom;
+                msgCheckbox.checked = msgChecked;
+            }
+            // Search Container Visibility
+            const savedSearchVisibility = localStorage.getItem("searchContVisibility");
+            if (savedSearchVisibility !== null) {
+                const {
+                    searchContHeight,
+                    searchContMarginBottom,
+                    searchChecked,
+                } = JSON.parse(savedSearchVisibility);
+                searchContainer.style.height = searchContHeight;
+                searchContainer.style.marginBottom = searchContMarginBottom;
+                searchCheckbox.checked = searchChecked;
+            }
         });
+
     </script>
 </body>
 

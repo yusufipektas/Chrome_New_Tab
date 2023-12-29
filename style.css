@@ -17,19 +17,20 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 20px;
     overflow-x: hidden;
     overflow-y: auto;
 }
 
+/* Time Container */
 #time-container {
     display: flex;
     align-items: baseline;
     justify-content: center;
     gap: 10px;
-    padding-top: 20px;
     cursor: default;
-    height: 125px;
+    height: 130px;
+    padding-top: 15px;
+    margin-bottom: 15px;
     overflow: hidden;
     transition: all .3s ease;
 }
@@ -40,6 +41,7 @@ body {
     font-size: 150px;
     line-height: 100px;
     font-weight: 500;
+    transition: all .3s ease;
 }
 
 #zone {
@@ -47,8 +49,15 @@ body {
 }
 
 /* name container */
-#name-container h1,
-#name-container span {
+#msg-container {
+    height: 60px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    transition: all .3s ease;
+}
+
+#msg-container h1,
+#msg-container span {
     font-size: 40px;
     font-weight: 500;
 }
@@ -57,6 +66,7 @@ body {
 #search-container {
     width: 500px;
     height: 50px;
+    margin-bottom: 15px;
     overflow: hidden;
     transition: all .3s ease;
 }
@@ -125,7 +135,7 @@ form input[type="search"] {
     flex-direction: column;
     background-color: transparent;
     overflow: hidden;
-    transition: background .5s;
+    transition: background .3s;
 }
 
 .bookmark:hover {
