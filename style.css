@@ -116,15 +116,18 @@ form input[type="search"] {
 }
 
 /* BookMarks */
-.bookmarks-container {
-    width: 502px;
+#shortcut-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    width: 502px;
+    height: 200px;
+    overflow: hidden;
+    transition: all .3s ease;
 }
 
-.bookmarks-container .bookmark {
+#shortcut-container .shortcut {
     width: 100px;
     height: 100px;
     gap: 8px;
@@ -138,12 +141,12 @@ form input[type="search"] {
     transition: background .3s;
 }
 
-.bookmark:hover {
+.shortcut:hover {
     background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(10px);
 }
 
-.bookmark-icon {
+.shortcut-icon {
     width: 50px;
     height: 50px;
     border-radius: 5px;
@@ -154,7 +157,7 @@ form input[type="search"] {
     overflow: hidden;
 }
 
-.bookmark .bookmark-title {
+.shortcut .shortcut-title {
     font-size: 13px;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -222,7 +225,7 @@ form input[type="search"] {
 .setting-inner {
     width: 100%;
     min-width: 350px;
-    padding: 15px 0 0 15px;
+    padding: 15px 0 15px 15px;
     display: flex;
     flex-direction: column;
     gap: 15px;

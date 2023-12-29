@@ -238,16 +238,34 @@ searchCheckbox.addEventListener("change", searchContVisibility);
 
 // <--------------------------------  Shortcuts  Setting  -------------------------------->
 
+// Shortcut Container Visibility
+let shortcutCheckbox = document.getElementById("shortcut-checkbox"),
+  shortcutContainer = document.getElementById("shortcut-container");
+function shortcutContVisibility() {
+  const shortcutContHeight = shortcutCheckbox.checked ? "200px" : "0";
+
+  shortcutContainer.style.height = shortcutContHeight;
+
+  localStorage.setItem(
+    "shortcutContVisibility",
+    JSON.stringify({
+      shortcutContHeight,
+      shortcutChecked: shortcutCheckbox.checked,
+    })
+  );
+}
+shortcutCheckbox.addEventListener("change", shortcutContVisibility);
+
 // Border Radius
 function hello(element) {
   element.style.borderRadius = "50%";
 }
-let z = document.querySelectorAll(".bookmark-icon");
+let z = document.querySelectorAll(".shortcut-icon");
 z.forEach(hello);
 
 // New Tab
 function helloac(element) {
   element.setAttribute("target", "_blank");
 }
-let ac = document.querySelectorAll(".bookmark");
+let ac = document.querySelectorAll(".shortcut");
 ac.forEach(helloac);
