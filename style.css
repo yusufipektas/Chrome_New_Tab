@@ -202,7 +202,6 @@ form input[type="search"] {
     transition: all .5s ease;
     overflow-x: hidden;
     overflow-y: auto;
-    /* -ms-overflow-style: none; */
     scrollbar-width: none;
 }
 

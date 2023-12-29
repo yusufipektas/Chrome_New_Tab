@@ -112,7 +112,7 @@ function searchGoogle(event) {
   window.location.href = googleSearchUrl;
 }
 
-// <--------------------Setting-------------------->
+// <--------------------------------Setting-------------------------------->
 
 // Selecting ID's
 let container = document.getElementById("container"),
@@ -163,10 +163,10 @@ function containerBlur() {
   localStorage.setItem("blur", blurRange);
 }
 
-// Show Hide Time
+// Show Hide Time Container
 let timeCheckbox = document.getElementById("time-checkbox"),
   timeContainer = document.getElementById("time-container");
-function showHideTime() {
+function timeContainerDisplay() {
   const timeContainerHeight = timeCheckbox.checked ? "125px" : "0";
   const timeContainerPaddingTop = timeCheckbox.checked ? "20px" : "0";
 
@@ -174,11 +174,38 @@ function showHideTime() {
   timeContainer.style.paddingTop = timeContainerPaddingTop;
 
   localStorage.setItem(
-    "timeShowHide",
+    "timeContainerDisplay",
     JSON.stringify({ timeContainerHeight, timeContainerPaddingTop })
   );
 }
-timeCheckbox.addEventListener("change", showHideTime);
+timeCheckbox.addEventListener("change", timeContainerDisplay);
+
+// Show Hide Search Container
+let searchCheckbox = document.getElementById("search-checkbox"),
+  searchContainer = document.getElementById("search-container");
+function searchContainerDisplay() {
+  if (searchCheckbox.checked === true) {
+    searchContainer.style.display = "block";
+    setTimeout(() => {
+      searchContainer.style.height = "50px";
+    }, 200);
+  } else {
+    searchContainer.style.height = "0";
+    setTimeout(() => {
+      searchContainer.style.display = "none";
+    }, 400);
+  }
+  // const searchContainerHeight = searchCheckbox.checked ? "50px" : "0";
+  // let searchContainerHiden = searchCheckbox.checked ? "block" : "none";
+
+  // searchContainer.style.height = searchContainerHeight;
+  // setTimeout(() => {
+  //   searchContainer.style.display = searchContainerHiden;
+  // }, 400);
+
+  // localStorage.setItem("searchContainerHeight", searchContainerHeight);
+}
+searchCheckbox.addEventListener("change", searchContainerDisplay);
 
 // Border Radius
 function hello(element) {

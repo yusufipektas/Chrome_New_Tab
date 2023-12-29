@@ -16,7 +16,7 @@ html {
     user-select: none;
 }
 
-/* checkox */
+/* Custom CheckBox */
 .switch {
     position: relative;
     display: inline-block;
@@ -70,7 +70,7 @@ input:checked+.slider:before {
     border-radius: 50%;
 }
 
-/* Input */
+/* Custom Input Range */
 input[type="range"] {
     -webkit-appearance: none;
     appearance: none;
