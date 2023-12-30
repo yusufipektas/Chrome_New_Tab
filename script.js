@@ -214,16 +214,13 @@ let RadioTwelveHour = document.getElementById("twelveHour-radio");
 let RadioTwentyfourHour = document.getElementById("twentyfourHour-radio");
 let labelTwelveHour = document.getElementById("twelveHour-label");
 let labelTwentyfourHour = document.getElementById("twentyfourHour-label");
-let settingRadio = document.getElementsByClassName("setting-radio")[0];
 function radioClick() {
-  if (timeCheckbox.checked === true) {
-    if (RadioTwelveHour.checked === true) {
-      labelTwelveHour.style.background = "#f7a707";
-      labelTwentyfourHour.style.background = "transparent";
-    } else {
-      labelTwelveHour.style.background = "transparent";
-      labelTwentyfourHour.style.background = "#f7a707";
-    }
+  if (RadioTwelveHour.checked === true) {
+    labelTwelveHour.style.background = "#f7a707";
+    labelTwentyfourHour.style.background = "transparent";
+  } else {
+    labelTwelveHour.style.background = "transparent";
+    labelTwentyfourHour.style.background = "#f7a707";
   }
 }
 
