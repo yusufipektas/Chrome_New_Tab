@@ -25,8 +25,17 @@ const dayNames = [
   "Sunday",
 ];
 
+// Selecting Clock ID's
+let hourID = document.getElementById("hour"),
+  minID = document.getElementById("min"),
+  zoneID = document.getElementById("zone"),
+  dayID = document.getElementById("day"),
+  dateID = document.getElementById("date"),
+  monthID = document.getElementById("month"),
+  yearID = document.getElementById("year"),
+  dayTimeID = document.getElementById("dayTime");
+
 setInterval(() => {
-  // Getting Date
   let a = new Date(),
     bHour = a.getHours(),
     hour = 0,
@@ -37,16 +46,7 @@ setInterval(() => {
     date = a.getDate(),
     bMonth = a.getMonth(),
     month = monthNames[bMonth - 1],
-    year = a.getFullYear(),
-    // Selecting Clock ID's
-    hourID = document.getElementById("hour"),
-    minID = document.getElementById("min"),
-    zoneID = document.getElementById("zone"),
-    dayID = document.getElementById("day"),
-    dateID = document.getElementById("date"),
-    monthID = document.getElementById("month"),
-    yearID = document.getElementById("year"),
-    dayTimeID = document.getElementById("dayTime");
+    year = a.getFullYear();
 
   //Hour format
   function hourFormat() {

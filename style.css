@@ -268,3 +268,10 @@ h3.setting-tile-heading {
     justify-content: space-between;
     align-items: center;
 }
+
+/* Seetting Radio */
+.setting-radio {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}

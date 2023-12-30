@@ -110,7 +110,6 @@
         </div>
     </div>
     <!----------------------------------------  Setting  ---------------------------------------->
-    <!-- <i class="fa-solid fa-gear" id="open-setting" onclick="openSetting()"></i> -->
     <div id="open-setting" onclick="openSetting()">
         <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 512 512">
             <path
@@ -142,6 +141,7 @@
             <!-- Clock Setting Section -->
             <div class="setting-section">
                 <h2 class="setting-sec-heading">Clock</h2>
+                <!-- Clock Display -->
                 <div class="setting-tile">
                     <div class="setting-tile-content">
                         <h3 class="setting-tile-heading">Time</h3>
@@ -150,6 +150,18 @@
                                 <input type="checkbox" id="time-checkbox" checked>
                                 <span class="slider round"></span>
                             </label>
+                        </div>
+                    </div>
+                </div>
+                <!-- Hour Format -->
+                <div class="setting-tile">
+                    <div class="setting-tile-content">
+                        <h3 class="setting-tile-heading">Time Format</h3>
+                        <div class="setting-radio">
+                            <label for="twelve-hour">12 Hr</label>
+                            <input type="radio" value="12" name="hour-format" id="twelve-hour">
+                            <label for="twentyfour-hour">24 Hr</label>
+                            <input type="radio" value="24" name="hour-format" id="twentyfour-hour">
                         </div>
                     </div>
                 </div>
