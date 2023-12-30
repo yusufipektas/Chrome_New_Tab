@@ -121,6 +121,7 @@
             <!-- Wallpaper Setting Section -->
             <div class="setting-section">
                 <h2 class="setting-sec-heading">Wallpaper</h2>
+                <!-- Dim Wallpaper -->
                 <div class="setting-tile setting-tile-withHeading">
                     <h3 class="setting-tile-heading">Dim the Wallpaper</h3>
                     <div class="setting-tile-content">
@@ -129,6 +130,7 @@
                         <div id="dim-value">30</div>
                     </div>
                 </div>
+                <!-- Blur Wallpaper -->
                 <div class="setting-tile setting-tile-withHeading">
                     <h3 class="setting-tile-heading">Blur the Wallpaper</h3>
                     <div class="setting-tile-content">
@@ -154,14 +156,16 @@
                     </div>
                 </div>
                 <!-- Hour Format -->
-                <div class="setting-tile">
+                <div class="setting-tile" id="hour-format-settingTile">
                     <div class="setting-tile-content">
                         <h3 class="setting-tile-heading">Time Format</h3>
                         <div class="setting-radio">
-                            <label for="twelve-hour">12 Hr</label>
-                            <input type="radio" value="12" name="hour-format" id="twelve-hour">
-                            <label for="twentyfour-hour">24 Hr</label>
-                            <input type="radio" value="24" name="hour-format" id="twentyfour-hour">
+                            <label for="twelveHour-radio" id="twelveHour-label">12 Hr</label>
+                            <input type="radio" value="12" name="hour-format" class="radio-buttons"
+                                id="twelveHour-radio" onclick="radioClick()" checked>
+                            <label for="twentyfourHour-radio" id="twentyfourHour-label">24 Hr</label>
+                            <input type="radio" value="24" name="hour-format" class="radio-buttons"
+                                id="twentyfourHour-radio" onclick="radioClick()">
                         </div>
                     </div>
                 </div>
@@ -218,71 +222,7 @@
 
 
     <script src="/script.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Dim Container
-            const savedDimValue = localStorage.getItem("dim");
-            if (savedDimValue !== null) {
-                document.getElementById("dim-range").value = savedDimValue;
-                containerDim();
-            }
-            // Blur Container
-            const savedBlurValue = localStorage.getItem("blur");
-            if (savedBlurValue !== null) {
-                document.getElementById("blur-range").value = savedBlurValue;
-                containerBlur();
-            }
-            // Time Container Visibility
-            const savedTimeVisibility = localStorage.getItem("timeContVisibility");
-            if (savedTimeVisibility !== null) {
-                const {
-                    timeContHeight,
-                    timeContPaddingTop,
-                    timeContMarginBottom,
-                    timeChecked,
-                } = JSON.parse(savedTimeVisibility);
-                timeContainer.style.height = timeContHeight;
-                timeContainer.style.paddingTop = timeContPaddingTop;
-                timeContainer.style.marginBottom = timeContMarginBottom;
-                timeCheckbox.checked = timeChecked;
-            }
-            // Message Container Visibility
-            const savedMsgVisibility = localStorage.getItem("msgContVisibility");
-            if (savedMsgVisibility !== null) {
-                const {
-                    msgContHeight,
-                    msgContMarginBottom,
-                    msgChecked,
-                } = JSON.parse(savedMsgVisibility);
-                msgContainer.style.height = msgContHeight;
-                msgContainer.style.marginBottom = msgContMarginBottom;
-                msgCheckbox.checked = msgChecked;
-            }
-            // Search Container Visibility
-            const savedSearchVisibility = localStorage.getItem("searchContVisibility");
-            if (savedSearchVisibility !== null) {
-                const {
-                    searchContHeight,
-                    searchContMarginBottom,
-                    searchChecked,
-                } = JSON.parse(savedSearchVisibility);
-                searchContainer.style.height = searchContHeight;
-                searchContainer.style.marginBottom = searchContMarginBottom;
-                searchCheckbox.checked = searchChecked;
-            }
-            // Shortcut Container Visibility
-            const savedShortcutVisibility = localStorage.getItem("shortcutContVisibility");
-            if (savedShortcutVisibility !== null) {
-                const {
-                    shortcutContHeight,
-                    shortcutChecked,
-                } = JSON.parse(savedShortcutVisibility);
-                shortcutContainer.style.height = shortcutContHeight;
-                shortcutCheckbox.checked = shortcutChecked;
-            }
-        });
-
-    </script>
+    <script src="/DOM script.js"></script>
 </body>
 
 </html>

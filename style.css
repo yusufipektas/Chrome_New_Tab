@@ -269,9 +269,31 @@ h3.setting-tile-heading {
     align-items: center;
 }
 
-/* Seetting Radio */
+/* Time Setting Tile */
+#hour-format-settingTile {
+    height: 30px;
+    overflow: hidden;
+    transition: all .3s ease;
+}
+
+/* Setting Radio */
 .setting-radio {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
+}
+
+.setting-radio label {
+    padding: 2px 4px;
+    border-radius: 5px;
+    width: 60px;
+    text-align: center;
+    border: 1px solid white;
+    cursor: pointer;
+    background-color: transparent;
+    transition: all .3s ease;
+}
+
+#twelveHour-label {
+    background-color: #f7a707;
 }

@@ -50,21 +50,33 @@ setInterval(() => {
 
   //Hour format
   function hourFormat() {
-    if (bHour === 0) {
-      hour = 12;
-    } else if (bHour > 12) {
-      hour = bHour - 12;
-    } else {
-      hour = bHour;
+    if (RadioTwelveHour.checked === true) {
+      if (bHour === 0) {
+        hour = 12;
+      } else if (bHour > 12) {
+        hour = bHour - 12;
+      } else {
+        hour = bHour;
+      }
+    } else if (RadioTwelveHour.checked === false) {
+      if (bHour === 0) {
+        hour = 12;
+      } else {
+        hour = bHour;
+      }
     }
   }
 
   // Time Zone
   function timeZone() {
-    if (bHour > 11) {
-      zoneID.innerHTML = "PM";
-    } else {
-      zoneID.innerHTML = "AM";
+    if (RadioTwelveHour.checked === true) {
+      if (bHour > 11) {
+        zoneID.innerHTML = "PM";
+      } else {
+        zoneID.innerHTML = "AM";
+      }
+    } else if (RadioTwelveHour.checked === false) {
+      zoneID.innerHTML = "";
     }
   }
 
@@ -167,6 +179,7 @@ function containerBlur() {
 }
 
 // <--------------------------------  Time  Setting  -------------------------------->
+let hourFormatSettingTile = document.getElementById("hour-format-settingTile");
 
 // Time Container Visibility
 let timeCheckbox = document.getElementById("time-checkbox"),
@@ -175,10 +188,13 @@ function timeContVisibility() {
   const timeContHeight = timeCheckbox.checked ? "130px" : "0";
   const timeContPaddingTop = timeCheckbox.checked ? "20px" : "0";
   const timeContMarginBottom = timeCheckbox.checked ? "15px" : "0";
+  // time format height(display), according to time checkbox
+  const hourFormatHeight = timeCheckbox.checked ? "30px" : "0";
 
   timeContainer.style.height = timeContHeight;
   timeContainer.style.paddingTop = timeContPaddingTop;
   timeContainer.style.marginBottom = timeContMarginBottom;
+  hourFormatSettingTile.style.height = hourFormatHeight;
 
   localStorage.setItem(
     "timeContVisibility",
@@ -186,11 +202,30 @@ function timeContVisibility() {
       timeContHeight,
       timeContPaddingTop,
       timeContMarginBottom,
+      hourFormatHeight,
       timeChecked: timeCheckbox.checked,
     })
   );
 }
 timeCheckbox.addEventListener("change", timeContVisibility);
+
+// Time Format
+let RadioTwelveHour = document.getElementById("twelveHour-radio");
+let RadioTwentyfourHour = document.getElementById("twentyfourHour-radio");
+let labelTwelveHour = document.getElementById("twelveHour-label");
+let labelTwentyfourHour = document.getElementById("twentyfourHour-label");
+let settingRadio = document.getElementsByClassName("setting-radio")[0];
+function radioClick() {
+  if (timeCheckbox.checked === true) {
+    if (RadioTwelveHour.checked === true) {
+      labelTwelveHour.style.background = "#f7a707";
+      labelTwentyfourHour.style.background = "transparent";
+    } else {
+      labelTwelveHour.style.background = "transparent";
+      labelTwentyfourHour.style.background = "#f7a707";
+    }
+  }
+}
 
 // <--------------------------------  Message  Setting  -------------------------------->
 
