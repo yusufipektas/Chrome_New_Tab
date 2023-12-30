@@ -116,14 +116,13 @@ function searchGoogle(event) {
 // <--------------------------------  Setting  -------------------------------->
 
 // Selecting ID's
-let container = document.getElementById("container"),
-  settingBox = document.getElementById("setting-box"),
-  openSettingBtn = document.getElementById("open-setting");
+let container = document.getElementById("container");
+const settingBox = document.getElementById("setting-box");
+const openSettingBtn = document.getElementById("open-setting");
 
 function openSetting() {
-  console.log("setting clicked");
-  settingBox.style.width = "350px";
   openSettingBtn.style.display = "none";
+  settingBox.style.width = "350px";
 }
 
 // Close Setting
@@ -137,7 +136,9 @@ function closeSetting() {
 // Close Setting on Outside Click
 window.onclick = function (event) {
   var clickInsideSetting = event.target.closest("#setting-box") !== null;
-  if (!clickInsideSetting && event.target !== openSettingBtn) {
+  var clickInsideOpenSettingBtn =
+    event.target.closest("#open-setting") !== null;
+  if (!clickInsideSetting && !clickInsideOpenSettingBtn) {
     closeSetting();
   }
 };
