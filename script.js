@@ -50,7 +50,7 @@ setInterval(() => {
 
   //Hour format
   function hourFormat() {
-    if (RadioTwelveHour.checked === true) {
+    if (Radio12Hr.checked === true) {
       if (bHour === 0) {
         hour = 12;
       } else if (bHour > 12) {
@@ -58,7 +58,7 @@ setInterval(() => {
       } else {
         hour = bHour;
       }
-    } else if (RadioTwelveHour.checked === false) {
+    } else if (Radio12Hr.checked === false) {
       if (bHour === 0) {
         hour = 12;
       } else {
@@ -69,13 +69,13 @@ setInterval(() => {
 
   // Time Zone
   function timeZone() {
-    if (RadioTwelveHour.checked === true) {
+    if (Radio12Hr.checked === true) {
       if (bHour > 11) {
         zoneID.innerHTML = "PM";
       } else {
         zoneID.innerHTML = "AM";
       }
-    } else if (RadioTwelveHour.checked === false) {
+    } else if (Radio12Hr.checked === false) {
       zoneID.innerHTML = "";
     }
   }
@@ -132,6 +132,7 @@ let container = document.getElementById("container");
 const settingBox = document.getElementById("setting-box");
 const openSettingBtn = document.getElementById("open-setting");
 
+// Open Setting
 function openSetting() {
   openSettingBtn.style.display = "none";
   settingBox.style.width = "350px";
@@ -210,18 +211,15 @@ function timeContVisibility() {
 timeCheckbox.addEventListener("change", timeContVisibility);
 
 // Time Format
-let RadioTwelveHour = document.getElementById("twelveHour-radio");
-let RadioTwentyfourHour = document.getElementById("twentyfourHour-radio");
-let labelTwelveHour = document.getElementById("twelveHour-label");
-let labelTwentyfourHour = document.getElementById("twentyfourHour-label");
-function radioClick() {
-  if (RadioTwelveHour.checked === true) {
-    labelTwelveHour.style.background = "#f7a707";
-    labelTwentyfourHour.style.background = "transparent";
-  } else {
-    labelTwelveHour.style.background = "transparent";
-    labelTwentyfourHour.style.background = "#f7a707";
-  }
+let Radio12Hr = document.getElementById("radio-12hr");
+let label12Hr = document.getElementById("label-12hr");
+let label24Hr = document.getElementById("label-24hr");
+function timeFormatRadio() {
+  const hr12Background = Radio12Hr.checked ? "#f7a707" : "transparent";
+  const hr24Background = Radio12Hr.checked ? "transparent" : "#f7a707";
+
+  label12Hr.style.background = hr12Background;
+  label24Hr.style.background = hr24Background;
 }
 
 // <--------------------------------  Message  Setting  -------------------------------->

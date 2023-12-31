@@ -277,13 +277,13 @@ h3.setting-tile-heading {
 }
 
 /* Setting Radio */
-.setting-radio {
+.hour-formar-radio {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.setting-radio label {
+.hour-formar-radio label {
     padding: 2px 4px;
     border-radius: 5px;
     width: 60px;
@@ -294,6 +294,6 @@ h3.setting-tile-heading {
     transition: all .3s ease;
 }
 
-#twelveHour-label {
+#label-12hr {
     background-color: #f7a707;
 }
