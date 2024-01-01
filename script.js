@@ -221,6 +221,9 @@ let Radio12Hr = document.getElementById("radio-12hr");
 let Radio24Hr = document.getElementById("radio-24hr");
 let label12Hr = document.getElementById("label-12hr");
 let label24Hr = document.getElementById("label-24hr");
+
+Radio12Hr.addEventListener("change", timeFormatRadio);
+Radio24Hr.addEventListener("change", timeFormatRadio);
 function timeFormatRadio() {
   const hr12Background = Radio12Hr.checked ? "#f7a707" : "transparent";
   const hr24Background = Radio24Hr.checked ? "#f7a707" : "transparent";
