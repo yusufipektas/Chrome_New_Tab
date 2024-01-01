@@ -27,6 +27,20 @@ document.addEventListener("DOMContentLoaded", function () {
     hourFormatSettingTile.style.height = hourFormatHeight;
     timeCheckbox.checked = timeChecked;
   }
+  // Time Format
+  const savedTimeFormat = localStorage.getItem("timeFormat");
+  if (savedTimeFormat !== null) {
+    const {
+      hr12Background,
+      hr24Background,
+      Radio12HrChecked,
+      Radio24HrChecked,
+    } = JSON.parse(savedTimeFormat);
+    label12Hr.style.background = hr12Background;
+    label24Hr.style.background = hr24Background;
+    Radio12Hr.checked = Radio12HrChecked;
+    Radio24Hr.checked = Radio24HrChecked;
+  }
   // Message Container Visibility
   const savedMsgVisibility = localStorage.getItem("msgContVisibility");
   if (savedMsgVisibility !== null) {

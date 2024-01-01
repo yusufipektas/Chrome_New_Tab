@@ -117,13 +117,14 @@ setInterval(() => {
 }, 1000);
 
 // Google Search Form
-function searchGoogle(event) {
+let searchForm = document.getElementById("search-form");
+searchForm.addEventListener("submit", function (event) {
   event.preventDefault();
-  var userInput = document.getElementById("search-input").value;
-  var googleSearchUrl =
-    "https://www.google.com/search?q=" + encodeURIComponent(userInput);
-  window.location.href = googleSearchUrl;
-}
+  var searchInput = document.getElementById("search-input").value;
+  var searchUrl =
+    "https://www.google.com/search?q=" + encodeURIComponent(searchInput);
+  window.location.href = searchUrl;
+});
 
 // <--------------------------------  Setting  -------------------------------->
 
@@ -133,18 +134,10 @@ const settingBox = document.getElementById("setting-box");
 const openSettingBtn = document.getElementById("open-setting");
 
 // Open Setting
-function openSetting() {
+openSettingBtn.addEventListener("click", function () {
   openSettingBtn.style.display = "none";
   settingBox.style.width = "350px";
-}
-
-// Close Setting
-function closeSetting() {
-  settingBox.style.width = "0px";
-  setTimeout(() => {
-    openSettingBtn.style.display = "block";
-  }, 300);
-}
+});
 
 // Close Setting on Outside Click
 window.onclick = function (event) {
@@ -152,13 +145,24 @@ window.onclick = function (event) {
   var clickInsideOpenSettingBtn =
     event.target.closest("#open-setting") !== null;
   if (!clickInsideSetting && !clickInsideOpenSettingBtn) {
-    closeSetting();
+    settingBox.style.width = "0px";
+    setTimeout(() => {
+      openSettingBtn.style.display = "block";
+    }, 300);
+  }
+
+  // Reset Box Visibility
+  var clickInsideSureBox = event.target.closest("#sure-reset") !== null;
+  if (!clickInsideSureBox && event.target !== resetBtn) {
+    sureBox.style.height = "0px";
+    sureBox.style.padding = "0px";
   }
 };
 
 // <--------------------------------  Wallpaper  Setting  -------------------------------->
 
 // Container Dim
+document.getElementById("dim-range").addEventListener("input", containerDim);
 function containerDim() {
   let dimRange = document.getElementById("dim-range").value;
   let dimValue = document.getElementById("dim-value");
@@ -170,6 +174,7 @@ function containerDim() {
 }
 
 // Container Blur
+document.getElementById("blur-range").addEventListener("input", containerBlur);
 function containerBlur() {
   let blurRange = document.getElementById("blur-range").value;
   let blurValue = document.getElementById("blur-value");
@@ -185,6 +190,8 @@ let hourFormatSettingTile = document.getElementById("hour-format-settingTile");
 // Time Container Visibility
 let timeCheckbox = document.getElementById("time-checkbox"),
   timeContainer = document.getElementById("time-container");
+
+timeCheckbox.addEventListener("change", timeContVisibility);
 function timeContVisibility() {
   const timeContHeight = timeCheckbox.checked ? "130px" : "0";
   const timeContPaddingTop = timeCheckbox.checked ? "20px" : "0";
@@ -208,25 +215,37 @@ function timeContVisibility() {
     })
   );
 }
-timeCheckbox.addEventListener("change", timeContVisibility);
 
 // Time Format
 let Radio12Hr = document.getElementById("radio-12hr");
+let Radio24Hr = document.getElementById("radio-24hr");
 let label12Hr = document.getElementById("label-12hr");
 let label24Hr = document.getElementById("label-24hr");
 function timeFormatRadio() {
   const hr12Background = Radio12Hr.checked ? "#f7a707" : "transparent";
-  const hr24Background = Radio12Hr.checked ? "transparent" : "#f7a707";
+  const hr24Background = Radio24Hr.checked ? "#f7a707" : "transparent";
 
   label12Hr.style.background = hr12Background;
   label24Hr.style.background = hr24Background;
+
+  localStorage.setItem(
+    "timeFormat",
+    JSON.stringify({
+      hr12Background,
+      hr24Background,
+      Radio12HrChecked: Radio12Hr.checked,
+      Radio24HrChecked: Radio24Hr.checked,
+    })
+  );
 }
 
 // <--------------------------------  Message  Setting  -------------------------------->
 
 // Message Container Visibility
-let msgCheckbox = document.getElementById("msg-checkbox"),
-  msgContainer = document.getElementById("msg-container");
+let msgCheckbox = document.getElementById("msg-checkbox");
+let msgContainer = document.getElementById("msg-container");
+
+msgCheckbox.addEventListener("change", msgContVisibility);
 function msgContVisibility() {
   const msgContHeight = msgCheckbox.checked ? "60px" : "0";
   const msgContMarginBottom = msgCheckbox.checked ? "15px" : "0";
@@ -243,13 +262,14 @@ function msgContVisibility() {
     })
   );
 }
-msgCheckbox.addEventListener("change", msgContVisibility);
 
 // <--------------------------------  Search  Setting  -------------------------------->
 
 // Search Container Visibility
-let searchCheckbox = document.getElementById("search-checkbox"),
-  searchContainer = document.getElementById("search-container");
+let searchCheckbox = document.getElementById("search-checkbox");
+let searchContainer = document.getElementById("search-container");
+
+searchCheckbox.addEventListener("change", searchContVisibility);
 function searchContVisibility() {
   const searchContHeight = searchCheckbox.checked ? "50px" : "0";
   const searchContMarginBottom = searchCheckbox.checked ? "15px" : "0";
@@ -266,13 +286,14 @@ function searchContVisibility() {
     })
   );
 }
-searchCheckbox.addEventListener("change", searchContVisibility);
 
 // <--------------------------------  Shortcuts  Setting  -------------------------------->
 
 // Shortcut Container Visibility
-let shortcutCheckbox = document.getElementById("shortcut-checkbox"),
-  shortcutContainer = document.getElementById("shortcut-container");
+let shortcutCheckbox = document.getElementById("shortcut-checkbox");
+let shortcutContainer = document.getElementById("shortcut-container");
+
+shortcutCheckbox.addEventListener("change", shortcutContVisibility);
 function shortcutContVisibility() {
   const shortcutContHeight = shortcutCheckbox.checked ? "200px" : "0";
 
@@ -286,7 +307,28 @@ function shortcutContVisibility() {
     })
   );
 }
-shortcutCheckbox.addEventListener("change", shortcutContVisibility);
+
+// Setting Reset
+let resetBtn = document.getElementById("reset-setting-btn");
+let sureBox = document.getElementById("sure-reset");
+let cancelBtn = document.getElementById("cancel-btn");
+let okBtn = document.getElementById("ok-btn");
+resetBtn.addEventListener("click", function () {
+  sureBox.style.height = "125px";
+  sureBox.style.padding = "15px";
+});
+function sureBoxHidden() {
+  sureBox.style.height = "0px";
+  sureBox.style.padding = "0px";
+}
+okBtn.addEventListener("click", function () {
+  localStorage.clear();
+  sureBoxHidden();
+  location.reload();
+});
+cancelBtn.addEventListener("click", function () {
+  sureBoxHidden();
+});
 
 // Border Radius
 function hello(element) {
