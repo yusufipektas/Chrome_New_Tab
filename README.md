@@ -28,8 +28,8 @@ Go to my [portfolio website](http://alihamas.com/projects/chrome_new_tab/Demo) f
 
 ## Technologies
 
-- HTML5
-- CSS3
+- HTML
+- CSS
 - JavaScript
 
 [![GitHub Language Stats](https://github-readme-stats.vercel.app/api/top-langs/?username=ali-hamas&layout=compact)](https://github.com/ali-hamas/Chrome_New_Tab.git)
@@ -47,7 +47,7 @@ To get a local copy of this project up and running, follow these steps:
 2. Open the project directory:
 
    ```bash
-   cd
+   cd Chrome_New_Tab
    ```
 
 3. Open the `index.html` file in your web browser to view the Chrome New Tab.
