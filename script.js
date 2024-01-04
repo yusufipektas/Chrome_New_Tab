@@ -120,10 +120,12 @@ setInterval(() => {
 let searchForm = document.getElementById("search-form");
 searchForm.addEventListener("submit", function (event) {
   event.preventDefault();
-  var searchInput = document.getElementById("search-input").value;
-  var searchUrl =
+  let searchInput = document.getElementById("search-input").value;
+  let searchUrl =
     "https://www.google.com/search?q=" + encodeURIComponent(searchInput);
   window.location.href = searchUrl;
+  // window.open(searchUrl, "_blank");
+  document.getElementById("search-input").value = "";
 });
 
 // <--------------------------------  Setting  -------------------------------->
@@ -311,6 +313,34 @@ function shortcutContVisibility() {
   );
 }
 
+// Open shortcuts in new tab
+let newTabCheckbox = document.getElementById("newTab-checkbox");
+
+newTabCheckbox.addEventListener("change", newTabShortcuts);
+function newTabShortcuts() {
+  let shortcuts = document.querySelectorAll(".shortcut");
+
+  function addNewTab() {
+    shortcuts.forEach((element) => {
+      element.setAttribute("target", "_blank");
+    });
+  }
+  function removeNewTab() {
+    shortcuts.forEach((element) => {
+      element.removeAttribute("target");
+    });
+  }
+
+  localStorage.setItem("newTabCheckbox", newTabCheckbox.checked === true);
+
+  let shortcutNewTab = newTabCheckbox.checked ? addNewTab() : removeNewTab();
+  localStorage.setItem("shortcutNewTab", shortcutNewTab);
+
+  window[shortcutNewTab]();
+}
+
+// <--------------------------------  Reset  Setting  -------------------------------->
+
 // Setting Reset
 let resetBtn = document.getElementById("reset-setting-btn");
 let sureBox = document.getElementById("sure-reset");
@@ -339,10 +369,3 @@ function hello(element) {
 }
 let z = document.querySelectorAll(".shortcut-icon");
 z.forEach(hello);
-
-// New Tab
-function helloac(element) {
-  element.setAttribute("target", "_blank");
-}
-let ac = document.querySelectorAll(".shortcut");
-ac.forEach(helloac);

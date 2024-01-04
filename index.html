@@ -26,7 +26,7 @@
         </div>
         <!-- Search Container -->
         <div id="search-container">
-            <form onsubmit="searchGoogle(event)" id="search-form" autocomplete="off">
+            <form id="search-form" autocomplete="off">
                 <label for="search-input">
                     <img src="https://cdn-icons-png.flaticon.com/128/281/281764.png" alt="google" width="20px">
                 </label>
@@ -198,6 +198,7 @@
             </div>
             <!-- Shotcut Setting Section -->
             <div class="setting-section">
+                <!-- Shortcut visibility -->
                 <h2 class="setting-sec-heading">Shortcuts</h2>
                 <div class="setting-tile">
                     <div class="setting-tile-content">
@@ -205,6 +206,18 @@
                         <div class="setting-checkbox">
                             <label class="switch">
                                 <input type="checkbox" id="shortcut-checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <!-- Open in New Tab -->
+                <div class="setting-tile">
+                    <div class="setting-tile-content">
+                        <h3 class="setting-tile-heading">Open shortcuts in new tab</h3>
+                        <div class="setting-checkbox">
+                            <label class="switch">
+                                <input type="checkbox" id="newTab-checkbox">
                                 <span class="slider round"></span>
                             </label>
                         </div>

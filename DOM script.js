@@ -70,4 +70,13 @@ document.addEventListener("DOMContentLoaded", function () {
     shortcutContainer.style.height = shortcutContHeight;
     shortcutCheckbox.checked = shortcutChecked;
   }
+
+  // Open shortcut in new tab
+  let savedCheckboxState = localStorage.getItem("newTabCheckbox");
+  let savedShortcutNewTab = localStorage.getItem("shortcutNewTab");
+
+  if (savedCheckboxState !== null && savedShortcutNewTab !== null) {
+    newTabCheckbox.checked = savedCheckboxState === "true";
+    window[savedShortcutNewTab]();
+  }
 });
