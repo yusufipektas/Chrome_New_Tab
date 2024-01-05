@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("blur-range").value = savedBlurValue;
     containerBlur();
   }
+
   // Time Container Visibility
   const savedTimeVisibility = localStorage.getItem("timeContVisibility");
   if (savedTimeVisibility !== null) {
@@ -18,28 +19,22 @@ document.addEventListener("DOMContentLoaded", function () {
       timeContHeight,
       timeContPaddingTop,
       timeContMarginBottom,
-      hourFormatHeight,
-      timeChecked,
+      timeCheckValue,
     } = JSON.parse(savedTimeVisibility);
     timeContainer.style.height = timeContHeight;
     timeContainer.style.paddingTop = timeContPaddingTop;
     timeContainer.style.marginBottom = timeContMarginBottom;
-    hourFormatSettingTile.style.height = hourFormatHeight;
-    timeCheckbox.checked = timeChecked;
+    timeCheckbox.checked = timeCheckValue;
   }
+
   // Time Format
   const savedTimeFormat = localStorage.getItem("timeFormat");
   if (savedTimeFormat !== null) {
-    const {
-      hr12Background,
-      hr24Background,
-      Radio12HrChecked,
-      Radio24HrChecked,
-    } = JSON.parse(savedTimeFormat);
+    const { hr12Background, hr24Background, Radio24HrCheckValue } =
+      JSON.parse(savedTimeFormat);
     label12Hr.style.background = hr12Background;
     label24Hr.style.background = hr24Background;
-    Radio12Hr.checked = Radio12HrChecked;
-    Radio24Hr.checked = Radio24HrChecked;
+    Radio24Hr.checked = Radio24HrCheckValue;
   }
   // Message Container Visibility
   const savedMsgVisibility = localStorage.getItem("msgContVisibility");
@@ -70,13 +65,10 @@ document.addEventListener("DOMContentLoaded", function () {
     shortcutContainer.style.height = shortcutContHeight;
     shortcutCheckbox.checked = shortcutChecked;
   }
-
-  // Open shortcut in new tab
-  let savedCheckboxState = localStorage.getItem("newTabCheckbox");
-  let savedShortcutNewTab = localStorage.getItem("shortcutNewTab");
-
-  if (savedCheckboxState !== null && savedShortcutNewTab !== null) {
-    newTabCheckbox.checked = savedCheckboxState === "true";
-    window[savedShortcutNewTab]();
+  // Icon Corners
+  let savedIconCorners = localStorage.getItem("iconCorners");
+  if (savedIconCorners !== null) {
+    document.getElementById("icon-range").value = savedIconCorners;
+    iconCorners();
   }
 });

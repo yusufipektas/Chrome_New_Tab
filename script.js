@@ -1,30 +1,3 @@
-// Year Names
-const monthNames = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "June",
-  "July",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
-
-// Day Names
-const dayNames = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
-];
-
 // Selecting Clock ID's
 let hourID = document.getElementById("hour"),
   minID = document.getElementById("min"),
@@ -40,13 +13,7 @@ setInterval(() => {
     bHour = a.getHours(),
     hour = 0,
     bMin = a.getMinutes(),
-    min = 0,
-    bDay = a.getDay(),
-    day = dayNames[bDay - 1],
-    date = a.getDate(),
-    bMonth = a.getMonth(),
-    month = monthNames[bMonth - 1],
-    year = a.getFullYear();
+    min = 0;
 
   //Hour format
   function hourFormat() {
@@ -102,18 +69,14 @@ setInterval(() => {
     }
   }
 
-  timeZone();
   hourFormat();
+  timeZone();
   dayTime();
   min0();
 
   // Printing Time
   hourID.innerHTML = hour;
   minID.innerHTML = min;
-  dayID.innerHTML = day;
-  dateID.innerHTML = date + ",";
-  monthID.innerHTML = month;
-  yearID.innerHTML = year;
 }, 1000);
 
 // Google Search Form
@@ -136,10 +99,27 @@ const settingBox = document.getElementById("setting-box");
 const openSettingBtn = document.getElementById("open-setting");
 
 // Open Setting
-openSettingBtn.addEventListener("click", function () {
+openSettingBtn.addEventListener("click", openSetting);
+function openSetting() {
   openSettingBtn.style.display = "none";
   settingBox.style.width = "350px";
-});
+}
+
+// Open Setting on left side hover
+document.addEventListener("mousemove", hoverSettingOpen);
+
+function hoverSettingOpen(event) {
+  const cursorX = event.clientX;
+  const cursorY = event.clientY;
+  if (cursorX === 0 && cursorY > window.innerHeight - 100) {
+    openSetting();
+  } else if (
+    cursorX === window.innerWidth - 1 &&
+    cursorY > window.innerHeight - 100
+  ) {
+    openSetting();
+  }
+}
 
 // Close Setting on Outside Click
 window.onclick = function (event) {
@@ -187,7 +167,6 @@ function containerBlur() {
 }
 
 // <--------------------------------  Time  Setting  -------------------------------->
-let hourFormatSettingTile = document.getElementById("hour-format-settingTile");
 
 // Time Container Visibility
 let timeCheckbox = document.getElementById("time-checkbox"),
@@ -198,24 +177,23 @@ function timeContVisibility() {
   const timeContHeight = timeCheckbox.checked ? "130px" : "0";
   const timeContPaddingTop = timeCheckbox.checked ? "20px" : "0";
   const timeContMarginBottom = timeCheckbox.checked ? "15px" : "0";
-  // time format height(display), according to time checkbox
-  const hourFormatHeight = timeCheckbox.checked ? "30px" : "0";
 
   timeContainer.style.height = timeContHeight;
   timeContainer.style.paddingTop = timeContPaddingTop;
   timeContainer.style.marginBottom = timeContMarginBottom;
-  hourFormatSettingTile.style.height = hourFormatHeight;
-
-  localStorage.setItem(
-    "timeContVisibility",
-    JSON.stringify({
-      timeContHeight,
-      timeContPaddingTop,
-      timeContMarginBottom,
-      hourFormatHeight,
-      timeChecked: timeCheckbox.checked,
-    })
-  );
+  if (timeCheckbox.checked === false) {
+    localStorage.setItem(
+      "timeContVisibility",
+      JSON.stringify({
+        timeContHeight,
+        timeContPaddingTop,
+        timeContMarginBottom,
+        timeCheckValue: timeCheckbox.checked,
+      })
+    );
+  } else {
+    localStorage.removeItem("timeContVisibility");
+  }
 }
 
 // Time Format
@@ -224,24 +202,27 @@ let Radio24Hr = document.getElementById("radio-24hr");
 let label12Hr = document.getElementById("label-12hr");
 let label24Hr = document.getElementById("label-24hr");
 
-Radio12Hr.addEventListener("change", timeFormatRadio);
-Radio24Hr.addEventListener("change", timeFormatRadio);
-function timeFormatRadio() {
-  const hr12Background = Radio12Hr.checked ? "#f7a707" : "transparent";
-  const hr24Background = Radio24Hr.checked ? "#f7a707" : "transparent";
+Radio12Hr.addEventListener("change", timeFormat);
+Radio24Hr.addEventListener("change", timeFormat);
+function timeFormat() {
+  let hr12Background = Radio12Hr.checked ? "#f7a707" : "transparent";
+  let hr24Background = Radio24Hr.checked ? "#f7a707" : "transparent";
 
   label12Hr.style.background = hr12Background;
   label24Hr.style.background = hr24Background;
 
-  localStorage.setItem(
-    "timeFormat",
-    JSON.stringify({
-      hr12Background,
-      hr24Background,
-      Radio12HrChecked: Radio12Hr.checked,
-      Radio24HrChecked: Radio24Hr.checked,
-    })
-  );
+  if (Radio24Hr.checked) {
+    localStorage.setItem(
+      "timeFormat",
+      JSON.stringify({
+        hr12Background,
+        hr24Background,
+        Radio24HrCheckValue: Radio24Hr.checked,
+      })
+    );
+  } else if (Radio12Hr.checked) {
+    localStorage.removeItem("timeFormat");
+  }
 }
 
 // <--------------------------------  Message  Setting  -------------------------------->
@@ -258,14 +239,18 @@ function msgContVisibility() {
   msgContainer.style.height = msgContHeight;
   msgContainer.style.marginBottom = msgContMarginBottom;
 
-  localStorage.setItem(
-    "msgContVisibility",
-    JSON.stringify({
-      msgContHeight,
-      msgContMarginBottom,
-      msgChecked: msgCheckbox.checked,
-    })
-  );
+  if (msgCheckbox.checked === false) {
+    localStorage.setItem(
+      "msgContVisibility",
+      JSON.stringify({
+        msgContHeight,
+        msgContMarginBottom,
+        msgChecked: msgCheckbox.checked,
+      })
+    );
+  } else {
+    localStorage.removeItem("msgContVisibility");
+  }
 }
 
 // <--------------------------------  Search  Setting  -------------------------------->
@@ -282,14 +267,18 @@ function searchContVisibility() {
   searchContainer.style.height = searchContHeight;
   searchContainer.style.marginBottom = searchContMarginBottom;
 
-  localStorage.setItem(
-    "searchContVisibility",
-    JSON.stringify({
-      searchContHeight,
-      searchContMarginBottom,
-      searchChecked: searchCheckbox.checked,
-    })
-  );
+  if (searchCheckbox.checked === false) {
+    localStorage.setItem(
+      "searchContVisibility",
+      JSON.stringify({
+        searchContHeight,
+        searchContMarginBottom,
+        searchChecked: searchCheckbox.checked,
+      })
+    );
+  } else {
+    localStorage.removeItem("searchContVisibility");
+  }
 }
 
 // <--------------------------------  Shortcuts  Setting  -------------------------------->
@@ -304,20 +293,24 @@ function shortcutContVisibility() {
 
   shortcutContainer.style.height = shortcutContHeight;
 
-  localStorage.setItem(
-    "shortcutContVisibility",
-    JSON.stringify({
-      shortcutContHeight,
-      shortcutChecked: shortcutCheckbox.checked,
-    })
-  );
+  if (shortcutCheckbox.checked === false) {
+    localStorage.setItem(
+      "shortcutContVisibility",
+      JSON.stringify({
+        shortcutContHeight,
+        shortcutChecked: shortcutCheckbox.checked,
+      })
+    );
+  } else {
+    localStorage.removeItem("shortcutContVisibility");
+  }
 }
 
 // Open shortcuts in new tab
 let newTabCheckbox = document.getElementById("newTab-checkbox");
 
-newTabCheckbox.addEventListener("change", newTabShortcuts);
-function newTabShortcuts() {
+newTabCheckbox.addEventListener("change", newTabOpen);
+function newTabOpen() {
   let shortcuts = document.querySelectorAll(".shortcut");
 
   function addNewTab() {
@@ -330,13 +323,21 @@ function newTabShortcuts() {
       element.removeAttribute("target");
     });
   }
+  newTabCheckbox.checked ? removeNewTab() : addNewTab();
+}
 
-  localStorage.setItem("newTabCheckbox", newTabCheckbox.checked === true);
+// Icon Corners
+document.getElementById("icon-range").addEventListener("input", iconCorners);
+function iconCorners() {
+  let iconRange = document.getElementById("icon-range").value;
+  let iconValue = document.getElementById("icon-value");
+  let allIcons = document.querySelectorAll(".shortcut-icon");
+  allIcons.forEach((element) => {
+    element.style.borderRadius = `${iconRange}%`;
+  });
+  iconValue.innerHTML = `${iconRange}%`;
 
-  let shortcutNewTab = newTabCheckbox.checked ? addNewTab() : removeNewTab();
-  localStorage.setItem("shortcutNewTab", shortcutNewTab);
-
-  window[shortcutNewTab]();
+  localStorage.setItem("iconCorners", iconRange);
 }
 
 // <--------------------------------  Reset  Setting  -------------------------------->
@@ -362,10 +363,3 @@ okBtn.addEventListener("click", function () {
 cancelBtn.addEventListener("click", function () {
   sureBoxHidden();
 });
-
-// Border Radius
-function hello(element) {
-  element.style.borderRadius = "50%";
-}
-let z = document.querySelectorAll(".shortcut-icon");
-z.forEach(hello);
