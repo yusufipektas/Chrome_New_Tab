@@ -8,7 +8,6 @@
     <title>New Tab</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="utilities.css">
-    <!-- <script src=" https://kit.fontawesome.com/4c582ec221.js" crossorigin="anonymous"></script> -->
 </head>
 
 <body>
@@ -22,7 +21,7 @@
         </div>
         <!-- Message Container -->
         <div id="msg-container">
-            <h1>Good <span id="dayTime">Morning</span><span id="comma">, </span><span id="name">Ali Hamas</span></h1>
+            <h1><span id="dayTime"></span><span id="name">Ali Hamas</span></h1>
         </div>
         <!-- Search Container -->
         <div id="search-container">
@@ -35,61 +34,61 @@
         </div>
         <!-- Shortcut Container -->
         <div id="shortcut-container">
-            <a href="https://web.whatsapp.com/" target="_blank" class="shortcut">
+            <a href="https://web.whatsapp.com/" class="shortcut">
                 <div class="shortcut-icon">
                     <img src="https://cdn-icons-png.flaticon.com/128/4423/4423697.png" width="60%">
                 </div>
                 <div class="shortcut-title">WhatsApp</div>
             </a>
-            <a href="https://youtube.com" target="_blank" class="shortcut">
+            <a href="https://youtube.com" class="shortcut">
                 <div class="shortcut-icon">
                     <img src="https://cdn-icons-png.flaticon.com/128/1384/1384060.png" width="60%">
                 </div>
                 <div class="shortcut-title">YouTube</div>
             </a>
-            <a href="https://twitter.com" target="_blank" class="shortcut">
+            <a href="https://twitter.com" class="shortcut">
                 <div class="shortcut-icon">
                     <img src="https://cdn-icons-png.flaticon.com/128/733/733579.png" width="60%">
                 </div>
                 <div class="shortcut-title">Twitter</div>
             </a>
-            <a href="https://instagram.com" target="_blank" class="shortcut">
+            <a href="https://instagram.com" class="shortcut">
                 <div class="shortcut-icon">
                     <img src="https://cdn-icons-png.flaticon.com/128/3621/3621435.png" width="80%">
                 </div>
                 <div class="shortcut-title">Instagram</div>
             </a>
-            <a href="https://facebook.com" target="_blank" class="shortcut">
+            <a href="https://facebook.com" class="shortcut">
                 <div class="shortcut-icon">
                     <img src="https://cdn-icons-png.flaticon.com/128/5968/5968764.png" width="70%">
                 </div>
                 <div class="shortcut-title">FaceBook</div>
             </a>
-            <a href="https://linkedin.com" target="_blank" class="shortcut">
+            <a href="https://linkedin.com" class="shortcut">
                 <div class="shortcut-icon">
                     <img src="https://cdn-icons-png.flaticon.com/128/145/145807.png" width="70%">
                 </div>
                 <div class="shortcut-title">LinkedIn</div>
             </a>
-            <a href="https://github.com" target="_blank" class="shortcut">
+            <a href="https://github.com" class="shortcut">
                 <div class="shortcut-icon">
                     <img src="https://cdn-icons-png.flaticon.com/128/2111/2111425.png" width="70%">
                 </div>
                 <div class="shortcut-title">GitHub</div>
             </a>
-            <a href="https://chat.openai.com/" target="_blank" class="shortcut">
+            <a href="https://chat.openai.com/" class="shortcut">
                 <div class="shortcut-icon">
                     <img src="https://cdn-icons-png.flaticon.com/128/11865/11865326.png" width="60%">
                 </div>
                 <div class="shortcut-title">Chat GPT</div>
             </a>
-            <a href="https://mail.google.com/" target="_blank" class="shortcut">
+            <a href="https://mail.google.com/" class="shortcut">
                 <div class="shortcut-icon">
                     <img src="https://cdn-icons-png.flaticon.com/128/5968/5968534.png" width="60%">
                 </div>
                 <div class="shortcut-title">Gmail</div>
             </a>
-            <a href="https://messenger.com/" target="_blank" class="shortcut">
+            <a href="https://messenger.com/" class="shortcut">
                 <div class="shortcut-icon">
                     <img src="https://cdn-icons-png.flaticon.com/128/5968/5968771.png" width="60%">
                 </div>
@@ -132,7 +131,7 @@
                 <div class="setting-tile setting-tile-withHeading">
                     <h3 class="setting-tile-heading">Blur the Wallpaper</h3>
                     <div class="setting-tile-content">
-                        <input type="range" id="blur-range" min="0" max="100" step="1" value="0">
+                        <input type="range" id="blur-range" min="0" max="20" step=".2" value="0">
                         <div id="blur-value">0%</div>
                     </div>
                 </div>
@@ -156,7 +155,7 @@
                 <div class="setting-tile" id="hour-format-settingTile">
                     <div class="setting-tile-content">
                         <h3 class="setting-tile-heading">Time Format</h3>
-                        <div class="hour-formar-radio">
+                        <div class="setting-radio">
                             <label for="radio-12hr" id="label-12hr">12 Hr</label>
                             <input type="radio" name="hour-format" class="hourFormat-RadioBtns" id="radio-12hr" checked>
                             <label for="radio-24hr" id="label-24hr">24 Hr</label>
@@ -168,6 +167,7 @@
             <!-- ---------------------------Message Setting Section--------------------------- -->
             <div class="setting-section">
                 <h2 class="setting-sec-heading">Message</h2>
+                <!-- Message Visibility -->
                 <div class="setting-tile">
                     <div class="setting-tile-content">
                         <h3 class="setting-tile-heading">Message</h3>
@@ -176,6 +176,15 @@
                                 <input type="checkbox" id="msg-checkbox" checked>
                                 <span class="slider round"></span>
                             </label>
+                        </div>
+                    </div>
+                </div>
+                <!-- Message Form -->
+                <div class="setting-tile">
+                    <div class="setting-tile-content">
+                        <h3 class="setting-tile-heading">Name</h3>
+                        <div class="name-input-div">
+                            <input type="text" id="name-input" minlength="1" maxlength="12" autocomplete="off">
                         </div>
                     </div>
                 </div>
@@ -216,7 +225,7 @@
                         <h3 class="setting-tile-heading">Open shortcuts in new tab</h3>
                         <div class="setting-checkbox">
                             <label class="switch">
-                                <input type="checkbox" id="newTab-checkbox" checked>
+                                <input type="checkbox" id="newTab-checkbox">
                                 <span class="slider round"></span>
                             </label>
                         </div>

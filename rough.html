@@ -4,41 +4,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toggle Clock</title>
+    <title>Clock</title>
 </head>
 
 <body>
-    <label>
-        <input type="checkbox" id="showClockCheckbox"> Show Clock
-    </label>
-    <div id="clock" style="display: none;">
-        Clock Content
-    </div>
+    <!-- <div id="clock-container">
+        <span id="clock"></span>
+        <span id="zone"></span>
+    </div> -->
 
+
+    <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Retrieve the checkbox state from localStorage
-            const showClockCheckbox = document.getElementById("showClockCheckbox");
-            const clock = document.getElementById("clock");
+        function showTime() {
+            let date = new Date();
+            let h = date.getHours();
+            let m = date.getMinutes();
+            let session = "AM";
 
-            // Set the initial state based on the stored value
-            showClockCheckbox.checked = localStorage.getItem("showClock") === "true";
-            updateClockVisibility();
-
-            // Add a change event listener to the checkbox
-            showClockCheckbox.addEventListener("change", function () {
-                // Store the checkbox state in localStorage
-                localStorage.setItem("showClock", showClockCheckbox.checked);
-
-                // Update the clock visibility
-                updateClockVisibility();
-            });
-
-            function updateClockVisibility() {
-                // Show or hide the clock based on the checkbox state
-                clock.style.display = showClockCheckbox.checked ? "block" : "none";
+            if (h == 0) {
+                h = 12;
             }
-        });
+
+            if (h > 12) {
+                h = h - 12;
+                session = "PM";
+            }
+
+            var time = h + ":" + m + " " + session;
+            document.getElementById("MyClockDisplay").innerText = time;
+            document.getElementById("MyClockDisplay").textContent = time;
+
+            setTimeout(showTime, 1000);
+        }
+
+        showTime();
     </script>
 </body>
 

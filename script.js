@@ -50,23 +50,24 @@ setInterval(() => {
   // Day Time
   function dayTime() {
     if (bHour >= 5 && bHour < 12) {
-      dayTimeID.innerHTML = "Morning";
+      dayTimeID.innerHTML = "Good Morning, ";
     } else if (bHour >= 12 && bHour < 16) {
-      dayTimeID.innerHTML = "After Noon";
+      dayTimeID.innerHTML = "Good After Noon, ";
     } else if (bHour >= 16 && bHour < 21) {
-      dayTimeID.innerHTML = "Evening";
+      dayTimeID.innerHTML = "Good Evening, ";
     } else {
-      dayTimeID.innerHTML = "Night";
+      dayTimeID.innerHTML = "Good Night, ";
     }
   }
 
   // Adding 0 to minutes
   function min0() {
-    if (bMin < 10) {
-      min = `0${bMin}`;
-    } else {
-      min = bMin;
-    }
+    // if (bMin < 10) {
+    //   min = `0${bMin}`;
+    // } else {
+    //   min = bMin;
+    // }
+    bMin < 10 ? (min = `0${bMin}`) : (min = bMin);
   }
 
   hourFormat();
@@ -86,8 +87,8 @@ searchForm.addEventListener("submit", function (event) {
   let searchInput = document.getElementById("search-input").value;
   let searchUrl =
     "https://www.google.com/search?q=" + encodeURIComponent(searchInput);
-  window.location.href = searchUrl;
-  // window.open(searchUrl, "_blank");
+  // window.location.href = searchUrl;
+  window.open(searchUrl, "_blank");
   document.getElementById("search-input").value = "";
 });
 
@@ -100,23 +101,22 @@ const openSettingBtn = document.getElementById("open-setting");
 
 // Open Setting
 openSettingBtn.addEventListener("click", openSetting);
+
 function openSetting() {
   openSettingBtn.style.display = "none";
   settingBox.style.width = "350px";
 }
 
 // Open Setting on left side hover
-document.addEventListener("mousemove", hoverSettingOpen);
+document.addEventListener("mousemove", hoverOpen);
 
-function hoverSettingOpen(event) {
+function hoverOpen(event) {
   const cursorX = event.clientX;
   const cursorY = event.clientY;
+  // console.log(`X = ${cursorX} and Y = ${cursorY}`);
   if (cursorX === 0 && cursorY > window.innerHeight - 100) {
     openSetting();
-  } else if (
-    cursorX === window.innerWidth - 1 &&
-    cursorY > window.innerHeight - 100
-  ) {
+  } else if (cursorX === window.innerWidth - 1 && cursorY < 100) {
     openSetting();
   }
 }
@@ -154,14 +154,14 @@ function containerDim() {
 
   localStorage.setItem("dim", dimRange);
 }
-
 // Container Blur
 document.getElementById("blur-range").addEventListener("input", containerBlur);
 function containerBlur() {
   let blurRange = document.getElementById("blur-range").value;
   let blurValue = document.getElementById("blur-value");
   container.style.backdropFilter = `blur(${blurRange}px)`;
-  blurValue.innerHTML = `${blurRange}%`;
+  roundedBlurValue = blurRange * 5;
+  blurValue.innerHTML = `${roundedBlurValue}%`;
 
   localStorage.setItem("blur", blurRange);
 }
@@ -253,6 +253,18 @@ function msgContVisibility() {
   }
 }
 
+// Message Name
+document.getElementById("name-input").value =
+  document.getElementById("name").innerText;
+document.getElementById("name-input").addEventListener("input", nameChange);
+function nameChange() {
+  let nameInput = document.getElementById("name-input").value;
+  let name = document.getElementById("name");
+  name.innerHTML = nameInput;
+
+  localStorage.setItem("Name", nameInput);
+}
+
 // <--------------------------------  Search  Setting  -------------------------------->
 
 // Search Container Visibility
@@ -336,8 +348,11 @@ function iconCorners() {
     element.style.borderRadius = `${iconRange}%`;
   });
   iconValue.innerHTML = `${iconRange}%`;
-
-  localStorage.setItem("iconCorners", iconRange);
+  if (iconRange < 50) {
+    localStorage.setItem("iconCorners", iconRange);
+  } else {
+    localStorage.removeItem("iconCorners");
+  }
 }
 
 // <--------------------------------  Reset  Setting  -------------------------------->

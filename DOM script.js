@@ -45,6 +45,13 @@ document.addEventListener("DOMContentLoaded", function () {
     msgContainer.style.marginBottom = msgContMarginBottom;
     msgCheckbox.checked = msgChecked;
   }
+  // Message Name
+  const savedName = localStorage.getItem("Name");
+  if (savedName !== null) {
+    document.getElementById("name").innerHTML = savedName;
+    document.getElementById("name-input").value = savedName;
+  }
+
   // Search Container Visibility
   const savedSearchVisibility = localStorage.getItem("searchContVisibility");
   if (savedSearchVisibility !== null) {
