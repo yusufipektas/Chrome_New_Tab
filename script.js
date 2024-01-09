@@ -17,20 +17,14 @@ setInterval(() => {
 
   //Hour format
   function hourFormat() {
-    if (Radio12Hr.checked === true) {
-      if (bHour === 0) {
-        hour = 12;
-      } else if (bHour > 12) {
-        hour = bHour - 12;
-      } else {
-        hour = bHour;
-      }
-    } else if (Radio12Hr.checked === false) {
-      if (bHour === 0) {
-        hour = 12;
-      } else {
-        hour = bHour;
-      }
+    if (Radio12Hr.checked) {
+      bHour === 0
+        ? (hour = 12)
+        : bHour > 12
+        ? (hour = bHour - 12)
+        : (hour = bHour);
+    } else {
+      hour = bHour;
     }
   }
 
@@ -61,36 +55,22 @@ setInterval(() => {
   }
 
   // Adding 0 to minutes
-  function min0() {
-    // if (bMin < 10) {
-    //   min = `0${bMin}`;
-    // } else {
-    //   min = bMin;
-    // }
+  function adding0() {
     bMin < 10 ? (min = `0${bMin}`) : (min = bMin);
+    if (Radio24Hr.checked) {
+      bHour < 10 ? (hour = `0${bHour}`) : (hour = bHour);
+    }
   }
 
   hourFormat();
   timeZone();
   dayTime();
-  min0();
+  adding0();
 
   // Printing Time
   hourID.innerHTML = hour;
   minID.innerHTML = min;
 }, 1000);
-
-// Google Search Form
-let searchForm = document.getElementById("search-form");
-searchForm.addEventListener("submit", function (event) {
-  event.preventDefault();
-  let searchInput = document.getElementById("search-input").value;
-  let searchUrl =
-    "https://www.google.com/search?q=" + encodeURIComponent(searchInput);
-  // window.location.href = searchUrl;
-  window.open(searchUrl, "_blank");
-  document.getElementById("search-input").value = "";
-});
 
 // <--------------------------------  Setting  -------------------------------->
 
@@ -105,20 +85,6 @@ openSettingBtn.addEventListener("click", openSetting);
 function openSetting() {
   openSettingBtn.style.display = "none";
   settingBox.style.width = "350px";
-}
-
-// Open Setting on left side hover
-document.addEventListener("mousemove", hoverOpen);
-
-function hoverOpen(event) {
-  const cursorX = event.clientX;
-  const cursorY = event.clientY;
-  // console.log(`X = ${cursorX} and Y = ${cursorY}`);
-  if (cursorX === 0 && cursorY > window.innerHeight - 100) {
-    openSetting();
-  } else if (cursorX === window.innerWidth - 1 && cursorY < 100) {
-    openSetting();
-  }
 }
 
 // Close Setting on Outside Click
@@ -199,28 +165,13 @@ function timeContVisibility() {
 // Time Format
 let Radio12Hr = document.getElementById("radio-12hr");
 let Radio24Hr = document.getElementById("radio-24hr");
-let label12Hr = document.getElementById("label-12hr");
-let label24Hr = document.getElementById("label-24hr");
 
 Radio12Hr.addEventListener("change", timeFormat);
 Radio24Hr.addEventListener("change", timeFormat);
 function timeFormat() {
-  let hr12Background = Radio12Hr.checked ? "#f7a707" : "transparent";
-  let hr24Background = Radio24Hr.checked ? "#f7a707" : "transparent";
-
-  label12Hr.style.background = hr12Background;
-  label24Hr.style.background = hr24Background;
-
   if (Radio24Hr.checked) {
-    localStorage.setItem(
-      "timeFormat",
-      JSON.stringify({
-        hr12Background,
-        hr24Background,
-        Radio24HrCheckValue: Radio24Hr.checked,
-      })
-    );
-  } else if (Radio12Hr.checked) {
+    localStorage.setItem("timeFormat", Radio24Hr.checked);
+  } else {
     localStorage.removeItem("timeFormat");
   }
 }
@@ -293,6 +244,57 @@ function searchContVisibility() {
   }
 }
 
+// Search Form
+let searchForm = document.getElementById("search-form");
+let googleRadio = document.getElementById("google-radio");
+let bingRadio = document.getElementById("bing-radio");
+let searchUrl;
+searchForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+  let searchInput = document.getElementById("search-input").value;
+  if (googleRadio.checked) {
+    searchUrl =
+      "https://www.google.com/search?q=" + encodeURIComponent(searchInput);
+  } else {
+    searchUrl =
+      "https://www.bing.com/search?q=" + encodeURIComponent(searchInput);
+  }
+  newTabSearchCheckbox.checked
+    ? window.open(searchUrl, "_blank")
+    : (window.location.href = searchUrl);
+  document.getElementById("search-input").value = "";
+});
+
+// New Tab Search
+let newTabSearchCheckbox = document.getElementById("newTab-search-checkbox");
+newTabSearchCheckbox.addEventListener("change", newTabSearchFunction);
+function newTabSearchFunction() {
+  if (newTabSearchCheckbox.checked) {
+    localStorage.setItem("newTabSearch", newTabSearchCheckbox.checked);
+  } else {
+    localStorage.removeItem("newTabSearch");
+  }
+}
+
+// Search Logo Change
+let googleLogo = document.getElementById("google-logo");
+let bingLogo = document.getElementById("bing-logo");
+
+googleRadio.addEventListener("change", searchLogoChange);
+bingRadio.addEventListener("change", searchLogoChange);
+
+function searchLogoChange() {
+  if (bingRadio.checked) {
+    bingLogo.style.display = "block";
+    googleLogo.style.display = "none";
+    localStorage.setItem("searchLogo", bingRadio.checked);
+  } else {
+    bingLogo.style.display = "none";
+    googleLogo.style.display = "block";
+    localStorage.removeItem("searchLogo");
+  }
+}
+
 // <--------------------------------  Shortcuts  Setting  -------------------------------->
 
 // Shortcut Container Visibility
@@ -319,9 +321,9 @@ function shortcutContVisibility() {
 }
 
 // Open shortcuts in new tab
-let newTabCheckbox = document.getElementById("newTab-checkbox");
+let newTabShortcutCheckbox = document.getElementById("newTab-checkbox");
 
-newTabCheckbox.addEventListener("change", newTabOpen);
+newTabShortcutCheckbox.addEventListener("change", newTabOpen);
 function newTabOpen() {
   let shortcuts = document.querySelectorAll(".shortcut");
 
@@ -335,7 +337,13 @@ function newTabOpen() {
       element.removeAttribute("target");
     });
   }
-  newTabCheckbox.checked ? removeNewTab() : addNewTab();
+  newTabShortcutCheckbox.checked ? addNewTab() : removeNewTab();
+
+  if (newTabShortcutCheckbox.checked) {
+    localStorage.setItem("newTabShortcut", newTabShortcutCheckbox.checked);
+  } else {
+    localStorage.removeItem("newTabShortcut");
+  }
 }
 
 // Icon Corners
@@ -355,7 +363,30 @@ function iconCorners() {
   }
 }
 
-// <--------------------------------  Reset  Setting  -------------------------------->
+// <--------------------------------  General  Setting  -------------------------------->
+
+function hoverOpen(event) {
+  const cursorX = event.clientX;
+  const cursorY = event.clientY;
+  // console.log(`X = ${cursorX} and Y = ${cursorY}`);
+  if (cursorX === 0 && cursorY > window.innerHeight - 100) {
+    openSetting();
+  } else if (cursorX === window.innerWidth - 1 && cursorY < 100) {
+    openSetting();
+  }
+}
+
+// Hot Corner Settings
+let hotCornerCheckox = document.getElementById("hot-corners-checkbox");
+hotCornerCheckox.addEventListener("change", function () {
+  if (!hotCornerCheckox.checked) {
+    document.removeEventListener("mousemove", hoverOpen);
+    localStorage.setItem("hotCorner", (hotCornerCheckox.checked = false));
+  } else {
+    document.addEventListener("mousemove", hoverOpen);
+    localStorage.removeItem("hotCorner");
+  }
+});
 
 // Setting Reset
 let resetBtn = document.getElementById("reset-setting-btn");

@@ -29,13 +29,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Time Format
   const savedTimeFormat = localStorage.getItem("timeFormat");
-  if (savedTimeFormat !== null) {
-    const { hr12Background, hr24Background, Radio24HrCheckValue } =
-      JSON.parse(savedTimeFormat);
-    label12Hr.style.background = hr12Background;
-    label24Hr.style.background = hr24Background;
-    Radio24Hr.checked = Radio24HrCheckValue;
+  if (savedTimeFormat === "true") {
+    Radio24Hr.checked = true;
   }
+
   // Message Container Visibility
   const savedMsgVisibility = localStorage.getItem("msgContVisibility");
   if (savedMsgVisibility !== null) {
@@ -61,6 +58,20 @@ document.addEventListener("DOMContentLoaded", function () {
     searchContainer.style.marginBottom = searchContMarginBottom;
     searchCheckbox.checked = searchChecked;
   }
+
+  // New Tab Search
+  let savedNewTabSearch = localStorage.getItem("newTabSearch");
+  if (savedNewTabSearch === "true") {
+    newTabSearchCheckbox.checked = true;
+  }
+
+  // Search Logo
+  let savedSearchLogo = localStorage.getItem("searchLogo");
+  if (savedSearchLogo === "true") {
+    bingRadio.checked = true;
+    searchLogoChange();
+  }
+
   // Shortcut Container Visibility
   const savedShortcutVisibility = localStorage.getItem(
     "shortcutContVisibility"
@@ -72,6 +83,14 @@ document.addEventListener("DOMContentLoaded", function () {
     shortcutContainer.style.height = shortcutContHeight;
     shortcutCheckbox.checked = shortcutChecked;
   }
+
+  // New Tab Shortcuts
+  let savednewTabShortcut = localStorage.getItem("newTabShortcut");
+  if (savednewTabShortcut === "true") {
+    newTabShortcutCheckbox.checked = true;
+    newTabOpen();
+  }
+
   // Icon Corners
   let savedIconCorners = localStorage.getItem("iconCorners");
   if (savedIconCorners !== null) {
@@ -79,3 +98,16 @@ document.addEventListener("DOMContentLoaded", function () {
     iconCorners();
   }
 });
+
+// Hot Corner
+let savedHotCorner = localStorage.getItem("hotCorner");
+if (savedHotCorner !== null) {
+  // if (savedHotCorner === "true") {
+  //   hotCornerCheckox.checked = true;
+  // } else {
+  //   hotCornerCheckox.checked = false;
+  // }
+  savedHotCorner.checked === false
+    ? (hotCornerCheckox.checked = true)
+    : (hotCornerCheckox.checked = false);
+}

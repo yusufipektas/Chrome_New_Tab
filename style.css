@@ -82,14 +82,18 @@ body {
     }
 }
 
-form label {
+form label img {
     position: absolute;
     left: 15px;
     top: 50%;
     transform: translateY(-50%);
     z-index: 1;
-    height: 20px;
     cursor: pointer;
+}
+
+form label img#bing-logo {
+    left: 10px;
+    display: none;
 }
 
 form input[type="search"] {
@@ -271,10 +275,11 @@ h3.setting-tile-heading {
     gap: 10px;
 }
 
-.setting-radio label {
+.hour-format-radio+label,
+.search-engine-radio+label {
     padding: 2px 4px;
     border-radius: 5px;
-    width: 60px;
+    width: 75px;
     text-align: center;
     border: 1px solid white;
     cursor: pointer;
@@ -282,7 +287,8 @@ h3.setting-tile-heading {
     transition: all .3s ease;
 }
 
-#label-12hr {
+.hour-format-radio:checked+label,
+.search-engine-radio:checked+label {
     background-color: #f7a707;
 }
 
