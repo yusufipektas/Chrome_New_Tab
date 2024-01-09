@@ -123,16 +123,16 @@ form input[type="search"] {
 #shortcut-container {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 100px);
     max-width: 550px;
     width: 500px;
     height: 200px;
+    max-height: 300px;
     overflow: hidden;
     transition: all .3s ease;
 }
 
 #shortcut-container .shortcut {
-    width: 100px;
     height: 100px;
     gap: 8px;
     border-radius: 5px;
@@ -301,6 +301,29 @@ h3.setting-tile-heading {
     width: 130px;
     text-align: center;
     text-transform: capitalize;
+}
+
+/* Shortcut Layout */
+.setting-tile-layout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.layout-radios+label {
+    padding: 4px 4px;
+    border-radius: 5px;
+    width: 90px;
+    text-align: center;
+    border: 1px solid white;
+    cursor: pointer;
+    background-color: transparent;
+    transition: all .3s ease;
+}
+
+.layout-radios:checked+.layout-labels {
+    background-color: #f7a707;
 }
 
 /* Reset Setting */

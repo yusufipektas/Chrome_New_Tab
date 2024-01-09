@@ -29,8 +29,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Time Format
   const savedTimeFormat = localStorage.getItem("timeFormat");
-  if (savedTimeFormat === "true") {
-    Radio24Hr.checked = true;
+  if (savedTimeFormat !== null) {
+    if (savedTimeFormat === "true") {
+      Radio24Hr.checked = true;
+    }
   }
 
   // Message Container Visibility
@@ -102,12 +104,12 @@ document.addEventListener("DOMContentLoaded", function () {
 // Hot Corner
 let savedHotCorner = localStorage.getItem("hotCorner");
 if (savedHotCorner !== null) {
-  // if (savedHotCorner === "true") {
-  //   hotCornerCheckox.checked = true;
-  // } else {
-  //   hotCornerCheckox.checked = false;
-  // }
-  savedHotCorner.checked === false
-    ? (hotCornerCheckox.checked = true)
-    : (hotCornerCheckox.checked = false);
+  if (savedHotCorner === "true") {
+    document.getElementById("hot-corners-checkbox").checked = true;
+    hotCorner();
+  } else {
+    document.getElementById("hot-corners-checkbox").checked = false;
+  }
+} else {
+  hotCorner();
 }

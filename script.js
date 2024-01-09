@@ -363,6 +363,14 @@ function iconCorners() {
   }
 }
 
+// Shortcut Layout
+let layoutRadios = document.getElementsByClassName("layout-radios");
+layoutRadios.forEach((element) => {
+  element.addEventListener("click", function () {
+    console.log("checked");
+  });
+});
+
 // <--------------------------------  General  Setting  -------------------------------->
 
 function hoverOpen(event) {
@@ -378,15 +386,15 @@ function hoverOpen(event) {
 
 // Hot Corner Settings
 let hotCornerCheckox = document.getElementById("hot-corners-checkbox");
-hotCornerCheckox.addEventListener("change", function () {
+hotCornerCheckox.addEventListener("change", hotCorner);
+function hotCorner() {
   if (!hotCornerCheckox.checked) {
     document.removeEventListener("mousemove", hoverOpen);
-    localStorage.setItem("hotCorner", (hotCornerCheckox.checked = false));
   } else {
     document.addEventListener("mousemove", hoverOpen);
-    localStorage.removeItem("hotCorner");
   }
-});
+  localStorage.setItem("hotCorner", hotCornerCheckox.checked);
+}
 
 // Setting Reset
 let resetBtn = document.getElementById("reset-setting-btn");
