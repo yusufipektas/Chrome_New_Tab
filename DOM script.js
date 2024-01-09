@@ -101,6 +101,24 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+// Shortcut Layout
+let savedShortcutLayout = localStorage.getItem("shortcutLayout");
+if (savedShortcutLayout !== null) {
+  if (savedShortcutLayout === "radio4x2.checked") {
+    radio4x2.checked = true;
+  } else if (savedShortcutLayout === "radio6x2.checked") {
+    radio6x2.checked = true;
+  } else if (savedShortcutLayout === "radio4x3.checked") {
+    radio4x3.checked = true;
+  } else if (savedShortcutLayout === "radio5x3.checked") {
+    radio5x3.checked = true;
+  } else if (savedShortcutLayout === "radio6x3.checked") {
+    radio6x3.checked = true;
+  } else {
+    radio5x2.checked = true;
+  }
+  layoutFunction();
+}
 // Hot Corner
 let savedHotCorner = localStorage.getItem("hotCorner");
 if (savedHotCorner !== null) {

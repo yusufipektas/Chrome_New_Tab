@@ -365,12 +365,42 @@ function iconCorners() {
 
 // Shortcut Layout
 let layoutRadios = document.getElementsByClassName("layout-radios");
-layoutRadios.forEach((element) => {
-  element.addEventListener("click", function () {
-    console.log("checked");
-  });
-});
-
+let radio4x2 = document.getElementById("radio-4x2");
+let radio5x2 = document.getElementById("radio-5x2");
+let radio6x2 = document.getElementById("radio-6x2");
+let radio4x3 = document.getElementById("radio-4x3");
+let radio5x3 = document.getElementById("radio-5x3");
+let radio6x3 = document.getElementById("radio-6x3");
+for (let index = 0; index < layoutRadios.length; index++) {
+  layoutRadios[index].addEventListener("change", layoutFunction);
+}
+function layoutFunction() {
+  if (radio4x2.checked) {
+    shortcutContainer.style.gridTemplate = "repeat(2, 100px) / repeat(4, 1fr)";
+    shortcutContainer.style.height = "200px";
+    localStorage.setItem("shortcutLayout", "radio4x2.checked");
+  } else if (radio6x2.checked) {
+    shortcutContainer.style.gridTemplate = "repeat(2, 100px) / repeat(6, 1fr)";
+    shortcutContainer.style.height = "200px";
+    localStorage.setItem("shortcutLayout", "radio6x2.checked");
+  } else if (radio4x3.checked) {
+    shortcutContainer.style.gridTemplate = "repeat(3, 100px) / repeat(4, 1fr)";
+    shortcutContainer.style.height = "300px";
+    localStorage.setItem("shortcutLayout", "radio4x3.checked");
+  } else if (radio5x3.checked) {
+    shortcutContainer.style.gridTemplate = "repeat(3, 100px) / repeat(5, 1fr)";
+    shortcutContainer.style.height = "300px";
+    localStorage.setItem("shortcutLayout", "radio5x3.checked");
+  } else if (radio6x3.checked) {
+    shortcutContainer.style.gridTemplate = "repeat(3, 100px) / repeat(6, 1fr)";
+    shortcutContainer.style.height = "300px";
+    localStorage.setItem("shortcutLayout", "radio6x3.checked");
+  } else {
+    shortcutContainer.style.gridTemplate = "repeat(2, 100px) / repeat(5, 1fr)";
+    shortcutContainer.style.height = "200px";
+    localStorage.setItem("shortcutLayout", "radio5x2.checked");
+  }
+}
 // <--------------------------------  General  Setting  -------------------------------->
 
 function hoverOpen(event) {
